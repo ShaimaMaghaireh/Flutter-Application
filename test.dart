@@ -3,17 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_application_2/main.dart';
 
-//? Registration Task:
 void main ()
 {
   runApp(MyApp());
 }
 
-void display()
-{
-  print('WELCOME');
-}
-class MyApp extends StatelessWidget
+  class MyApp extends StatelessWidget
 {
  @override
   Widget build(BuildContext context)
@@ -21,17 +16,33 @@ class MyApp extends StatelessWidget
     return MaterialApp(home: HomePage(),);
   }
 }
+
+void display()
+{
+  print('WELCOME');
+}
 class HomePage extends StatefulWidget
 {
   @override
   State<HomePage> createState() => _HomePageState();
 }
-class _HomePageState extends State<HomePage>
-{
+
+class _HomePageState extends State<HomePage> {
   final GlobalKey <FormState> _key=GlobalKey();
-  final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _confirmPassword = TextEditingController();
-  String _gender = 'Male';
+String searchValue='your search will apper here';
+String prodImage='';
+List  foundedresult=[];
+Map product={
+'Sun flower':{'title':'this is sun flower','image':'https://www.highmowingseeds.com/media/catalog/product/cache/6cbdb003cf4aae33b9be8e6a6cf3d7ad/7/1/7104-1.jpg'},
+
+'Rose flower':{'title':'this is rose flower','image':'https://m.media-amazon.com/images/I/41AunJOrP1L.jpg'},
+
+'Spider flower':{'title':'this is spider flower','image':'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_EgxNyr8jBHioEsa0cn3rIKJC3qNKsIQRMQ&s'},
+
+'Tulip':{'title':'this is tulip flower','image':'https://assets.florista.ph/uploads/product-pics/2065_18_2065.webp'}
+
+
+};
   @override
   
   Widget build(BuildContext context)
@@ -40,7 +51,7 @@ class _HomePageState extends State<HomePage>
       appBar:PreferredSize(
           preferredSize: Size.fromHeight(80.0),
       child: AppBar(
-        backgroundColor:Color.fromRGBO(156, 58, 154, 1),
+        backgroundColor:Color.fromRGBO(125, 12, 121, 1),
         leading: Container(
           margin: EdgeInsets.only(left: 10,bottom: 10),
           child: CircleAvatar(
@@ -54,340 +65,95 @@ class _HomePageState extends State<HomePage>
           margin: EdgeInsets.only(bottom: 10,right: 10),
           child: ElevatedButton(onPressed:() => {display()}, child:Text('press'),
           style:ElevatedButton.styleFrom(padding: EdgeInsets.only(top:10,bottom:10),backgroundColor:Color.fromARGB(255, 245, 173, 239)),),
-        )]
-        )
-        ),
-        
-        body:Column(children: [Text('Register Information:',style:TextStyle(fontSize: 20),),
-        
-        Form(
-          child:Column(
-             children: [
-               TextFormField
-            (
-               decoration: InputDecoration(label: Text('enter your  first name')),
-              onSaved: (value)
-              {
-               print(value);
-              },
-              validator: (value) {
-                print(' first name is missing');
-              },
-             
+        )])),
+       body:ListView(
+        children: [
+          SizedBox(
+            height: 20,
+          ),
 
-            ),
-             TextFormField
-            (
-             decoration: InputDecoration(label: Text('enter your last name')),
-              onSaved: (value)
-              {
-               print(value);
-              },
-              validator: (value) {
-                print(' last name is missing');
-              },
-             
-            ),
+        Container(
+          width: 400,
+          height: 200,
+          color: Color.fromARGB(255, 227, 165, 218),
+          child: Image.network('https://www.gardenia.net/wp-content/uploads/2023/05/types-of-flowers.webp',width: 100,height: 100,fit: BoxFit.contain,)),
 
-            TextFormField
-            (
-              decoration: InputDecoration(label: Text('enter your email')),
-              onSaved: (value)
+          TextField(
+            onChanged: (x)
+            {
+              List productList=product.keys.toList();
+              List result=[];
+              //? print(productList);
+              bool found=false;
+              for(var i=0;i<productList.length;i++)
               {
-               print(value);
-              },
-              validator: (value) {
-                print('email is missing');
-              },
-              
-
-            ),
-             TextFormField
-            (
-              controller: _passwordController,
-              decoration: InputDecoration(label: Text('enter your password')),
-              onSaved: (value)
-              {
-               print(value);
-              },
-              validator: (value)
-              {
-                if(value != _passwordController)
+                if(productList[i].contains(x))
                 {
-                  print('password is missing');
+                  result.add(product[productList[i]]);
+                  found=true;
                 }
-              },
-              
+              }
+             //? print(result);
 
+              if(found==false)
+              {
+                result=[];
+                print('not found');
+              }
+
+              setState(() {
+                foundedresult=result;
+                print(foundedresult);
+                print(foundedresult.isEmpty);
+              });   
+            },
+            decoration: InputDecoration(
+              label: Text('search'),
+              hintText: 'search for item',
+              icon:Icon(Icons.search),
             ),
-             TextFormField
-            (
-              controller: _confirmPassword,
-              decoration: InputDecoration(label: Text('confirm your password')),
-              onSaved: (value)
-              {
-               print(value);
-              },
-              validator: (value)
-              {
-                if(value != _passwordController)
-                 {
-                  print('Passwords do not match');
-                 }
-                 else if(value==_passwordController)
-                 {
-                  print(' confirmed');
-                 }
-              },
-              
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          //?Text(searchValue),
+          !foundedresult.isEmpty ? Container(
+            child: ListView.builder(
+              itemCount: foundedresult.length,
+              itemBuilder: (context, index) {
 
+                // return ListTile
+                // (
+                //  leading: 
+                //     Image.network(foundedresult[index]['image'],fit: BoxFit.fill ),
+                //     title:Text(foundedresult[index]['title']),
+                  
+                // );
+                return Card(
+            clipBehavior: Clip.antiAliasWithSaveLayer,
+            child: Column(
+              children: [
+                Image.network(foundedresult[index]['image'],fit: BoxFit.fill ),
+                Text(foundedresult[index]['title']),
+              ],
             ),
-             TextFormField
-            (
-               decoration: InputDecoration(label: Text('choose your gender')),
-              onSaved: (value)
-              {
-               print(value);
-              },
-              validator: (value) {
-                print('gender is missing');
-              },
-             
+            shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0),
             ),
-             TextFormField
-            (
-              decoration: InputDecoration(label: Text('enter your phone number')),
-              onSaved: (value)
-              {
-               print(value);
-              },
-              validator: (value) {
-                print('phone number is missing');
-              },
-            
+            elevation: 5,
+            margin: EdgeInsets.all(10),
+          );
 
-            ),
-             TextFormField
-            (
-              decoration: InputDecoration(label: Text('enter your birthday')),
-              onSaved: (value)
-              {
-               print(value);
-              },
-              validator: (value) {
-                print('birthday is missing');
-              },
-              
-
-            ),
-           
-            ElevatedButton(
-              onPressed: ()
-              {
-                if(_key.currentState!.validate())
-                {
-                  _key.currentState!.save();
-                  print('form saved');
-                }
-              },
-              child:Text('submit'),
-              
-              ),
-
-        ],))
-        
-        ],
-        ),
-        
-        
-        
-        
-        
-        );
-        
-        }
-}
-
-
-
-
-// import 'package:flutter/cupertino.dart';
-// import 'package:flutter/material.dart';
-// import 'package:flutter/widgets.dart';
-// import 'package:flutter_application_2/main.dart';
-// void main ()
-// {
-//   runApp(MyApp());
-// }
-
-//   class MyApp extends StatelessWidget
-// {
-//  @override
-//   Widget build(BuildContext context)
-//   {
-//     return MaterialApp(home: HomePage(),);
-//   }
-// }
-
-// void display()
-// {
-//   print('WELCOME');
-// }
-// class HomePage extends StatefulWidget
-// {
-//   //String searchValue='';
-//   @override
-//   State<HomePage> createState() => _HomePageState();
-// }
-
-// class _HomePageState extends State<HomePage> {
-//   final GlobalKey <FormState> _key=GlobalKey();
-// String searchValue='your search will apper here';
-//  String prodImage='';
-// Map product={
-// 'Sun flower':{'title':'this is sun flower','image':'https://www.highmowingseeds.com/media/catalog/product/cache/6cbdb003cf4aae33b9be8e6a6cf3d7ad/7/1/7104-1.jpg'},
-
-// 'Rose flower':{'title':'this is rose flower','image':'https://m.media-amazon.com/images/I/41AunJOrP1L.jpg'},
-
-// 'Spider flower':{'title':'this is spider flower','image':'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_EgxNyr8jBHioEsa0cn3rIKJC3qNKsIQRMQ&s'},
-
-// 'Tulip':{'title':'this is tulip flower','image':'https://assets.florista.ph/uploads/product-pics/2065_18_2065.webp'}
-
-
-// };
-//   @override
-  
-//   Widget build(BuildContext context)
-//   {
-//     return Scaffold(
-//       appBar:PreferredSize(
-//           preferredSize: Size.fromHeight(80.0),
-//       child: AppBar(
-//         backgroundColor:Color.fromRGBO(125, 12, 121, 1),
-//         leading: Container(
-//           margin: EdgeInsets.only(left: 10,bottom: 10),
-//           child: CircleAvatar(
-//            radius: 55,
-//             backgroundImage: NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWlQ4x2xmTPgfq2OzGZAsxFjLpp0hjM1UALg&s'),
-//         )),
-//         title:Container(
-//           margin: EdgeInsets.only(left: 40,bottom: 10),
-//           child: Text('Flowers',style:TextStyle(color:Color.fromARGB(255, 60, 179, 234),fontSize:35))),
-//         actions: [Container(
-//           margin: EdgeInsets.only(bottom: 10,right: 10),
-//           child: ElevatedButton(onPressed:() => {display()}, child:Text('press'),
-//           style:ElevatedButton.styleFrom(padding: EdgeInsets.only(top:10,bottom:10),backgroundColor:Color.fromARGB(255, 245, 173, 239)),),
-//         )])),
-//        body:Column(
-//         children: [
-//           SizedBox(
-//             height: 20,
-//           ),
-
-//         Container(
-//           width: 400,
-//           height: 200,
-//           color: Color.fromARGB(255, 211, 159, 204),
-//           child: Image.network('https://www.gardenia.net/wp-content/uploads/2023/05/types-of-flowers.webp',width: 100,height: 100,fit: BoxFit.contain,)),
-
-//           TextField(
-//             onChanged: (x)
-//             {
-//               if (product.keys.contains(x)) 
-//              { 
-//               searchValue=product[x]['title'];
-//               prodImage=product[x]['image'];
-//              }
-//              else{
-//               print('product not found');
-//              }
-//               setState(() {
-//                 // if(x=='')
-//                 // {
-//                 //  searchValue='your search will appear here';
-//                 // }
-//                 // else
-//                 // {
-//                 //  searchValue= x;
-//                 // }
-
-//                   searchValue=searchValue;
-//                   prodImage=prodImage;
-//               });
-
-              
-//             },
-//             decoration: InputDecoration(
-//               label: Text('search'),
-//               hintText: 'search for item',
-//               icon:Icon(Icons.search),
-//             ),
-//           ),
-//           SizedBox(
-//             height: 20,
-//           ),
-//           //?Text(searchValue),
-//           prodImage !='' ?Column(children: [Text(searchValue),Image.network(prodImage)],) : Text('item not found'),
           
-//           Form(
-//             key: _key ,
-//             child: Column(
-//             children: [
-//               TextFormField
-//             (
-//               onSaved: (value)
-//               {
-//                print(value);
-//               },
-//               validator: (value) {
-//                 print('name is missing');
-//               },
-//               decoration: InputDecoration(label: Text('enter your name')),
-
-//             ),
-            
-//              TextFormField
-//             (
-//               onSaved: (newvalue)
-//               {
-//                print(newvalue);
-//               },
-//               validator: (value) {
-//                 print('email is missing');
-//               },
-//               decoration: InputDecoration(label: Text('enter your email')),
-
-//             ),
-
-//              FormField(
-//               builder: (FormFieldState)
-//               {
-//                 return Checkbox(value: true,onChanged: (value) => {});
-//               }
-              
-//               ),
-//             ElevatedButton(
-//               onPressed: ()
-//               {
-//                 if(_key.currentState!.validate())
-//                 {
-//                   _key.currentState!.save();
-//                   print('form saved');
-//                 }
-//               },
-//               child:Text('submit'),
-              
-//               ),
-
-             
-
-
-//           ],)),
+              },
+            ),
+            )
+            :Text('no image found'),
+         
           
-//           ],
+       ],
        
-//     ),
-//     );
-//   }
-// }
-     
+    ),
+    );
+  }
+}
