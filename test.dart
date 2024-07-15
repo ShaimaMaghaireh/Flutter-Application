@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_application_2/main.dart';
+import'package:flutter_application_2/screens.dart';
 
 void main ()
 {
@@ -13,7 +14,12 @@ void main ()
  @override
   Widget build(BuildContext context)
   {
-    return MaterialApp(home: HomePage(),);
+    return MaterialApp(
+      routes:
+      {
+       '/page1.dart': (context) => PageOne(),
+      } ,
+      home: HomePage(),);
   }
 }
 
@@ -32,6 +38,14 @@ class _HomePageState extends State<HomePage> {
 String searchValue='your search will apper here';
 String prodImage='';
 List  foundedresult=[];
+
+void deleteCard(int index) 
+{
+    setState(()
+    {
+      foundedresult.removeAt(index);
+    });
+}
 Map product={
 'Sun flower':{'title':'this is sun flower','image':'https://www.highmowingseeds.com/media/catalog/product/cache/6cbdb003cf4aae33b9be8e6a6cf3d7ad/7/1/7104-1.jpg'},
 
@@ -63,7 +77,7 @@ Map product={
           child: Text('Flowers',style:TextStyle(color:Color.fromARGB(255, 60, 179, 234),fontSize:35))),
         actions: [Container(
           margin: EdgeInsets.only(bottom: 10,right: 10),
-          child: ElevatedButton(onPressed:() => {display()}, child:Text('press'),
+          child: ElevatedButton(onPressed:() => {display()}, child:Text('Add new'),
           style:ElevatedButton.styleFrom(padding: EdgeInsets.only(top:10,bottom:10),backgroundColor:Color.fromARGB(255, 245, 173, 239)),),
         )])),
        body:ListView(
@@ -118,6 +132,8 @@ Map product={
           ),
           //?Text(searchValue),
           !foundedresult.isEmpty ? Container(
+            width: 200,
+            height: 300,
             child: ListView.builder(
               itemCount: foundedresult.length,
               itemBuilder: (context, index) {
@@ -135,6 +151,13 @@ Map product={
               children: [
                 Image.network(foundedresult[index]['image'],fit: BoxFit.fill ),
                 Text(foundedresult[index]['title']),
+                IconButton(
+                icon: Icon(Icons.delete,color:Color.fromARGB(230, 165, 14, 14),size:25,),
+                onPressed: () {
+                  deleteCard(index);
+                },
+              ),
+
               ],
             ),
             shape: RoundedRectangleBorder(
