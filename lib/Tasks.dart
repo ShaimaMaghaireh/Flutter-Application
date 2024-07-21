@@ -2,9 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_application_2/main.dart';
-import 'page1.dart';
-import 'data.dart';
-import 'newapp.dart';
+import '../Flutter-Application/page1.dart';
+import '../Flutter-Application/data.dart';
 
 
 void main ()
@@ -21,7 +20,6 @@ void main ()
       routes:
       {
        '/page1': (context) => PageOne (),
-       '/newapp': (context) => PageOne (),
       } ,
       initialRoute:'/page1' ,
       home: HomePage(),);
@@ -38,8 +36,7 @@ class HomePage extends StatefulWidget
   State<HomePage> createState() => _HomePageState();
 }
 
- class _HomePageState extends State<HomePage>
-   {
+ class _HomePageState extends State<HomePage> {
   final GlobalKey <FormState> _key=GlobalKey();
 String searchValue='your search will apper here';
 String prodImage='';
@@ -48,18 +45,28 @@ Map product=Data.product;
 GlobalKey <FormState> _formkey = GlobalKey <FormState>();
 String updatedtitle='';
 String updatedimage='';
-// void deleteCard(int index) 
-// {
-//     setState(()
-//     {
-//       foundedresult.removeAt(index);
-//     });
-// }
+void deleteCard(int index) 
+{
+    setState(()
+    {
+      foundedresult.removeAt(index);
+    });
+}
+// Map product={
+// 'Sun flower':{'title':'this is sun flower','image':'https://www.highmowingseeds.com/media/catalog/product/cache/6cbdb003cf4aae33b9be8e6a6cf3d7ad/7/1/7104-1.jpg'},
+
+// 'Rose flower':{'title':'this is rose flower','image':'https://m.media-amazon.com/images/I/41AunJOrP1L.jpg'},
+
+// 'Spider flower':{'title':'this is spider flower','image':'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_EgxNyr8jBHioEsa0cn3rIKJC3qNKsIQRMQ&s'},
+
+// 'Tulip':{'title':'this is tulip flower','image':'https://assets.florista.ph/uploads/product-pics/2065_18_2065.webp'}
+
+
+// };
   @override
   
   Widget build(BuildContext context)
   {
-
  final GlobalKey <FormState> _key=GlobalKey();
 String searchValue='your search will apper here';
 String prodImage='';
@@ -68,8 +75,6 @@ Map product=Data.product;
 GlobalKey <FormState> _formkey = GlobalKey <FormState>();
 String updatedtitle='';
 String updatedimage='';
-String updatedprice='';
-
     return Scaffold(
       appBar:PreferredSize(
           preferredSize: Size.fromHeight(80.0),
@@ -90,7 +95,6 @@ String updatedprice='';
           ElevatedButton(onPressed:() => {Navigator.pushNamed(context,'/page1')}, child:Text('Add new'),
           style:ElevatedButton.styleFrom(padding: EdgeInsets.only(top:10,bottom:10),backgroundColor:Color.fromARGB(255, 245, 173, 239)),),
         )])),
-
        body:ListView
        (
         children: [
@@ -108,7 +112,6 @@ String updatedprice='';
           TextField(
             onChanged: (x)
             {
-              print(x);
               List productList=product.keys.toList();
               List result=[];
               //? print(productList);
@@ -131,8 +134,6 @@ String updatedprice='';
 
               setState(() {
                 foundedresult=result;
-                print('foundedresult');
-
                 print(foundedresult);
                 print(foundedresult.isEmpty);
               });   
@@ -144,25 +145,30 @@ String updatedprice='';
             ),
           ),
 
-      
           SizedBox(
             height: 20,
           ),
           //?Text(searchValue),
           !foundedresult.isEmpty ? Container(
-            width: 300,
-            height: 400,
+            width: 200,
+            height: 300,
             child: ListView.builder(
               itemCount: foundedresult.length,
-              itemBuilder: (context, index) 
-              {
+              itemBuilder: (context, index) {
+
+                // return ListTile
+                // (
+                //  leading: 
+                //     Image.network(foundedresult[index]['image'],fit: BoxFit.fill ),
+                //     title:Text(foundedresult[index]['title']),
+                  
+                // );
                 return Card(
             clipBehavior: Clip.antiAliasWithSaveLayer,
             child: Column(
               children: [
                 Image.network(foundedresult[index]['image'],fit: BoxFit.fill ),
-                Text(foundedresult[index],),
-                 Text(foundedresult[index]['price'],),
+                Text(foundedresult[index]['title'],),
                 IconButton(
                 icon: Icon(Icons.delete,color:Color.fromARGB(230, 165, 14, 14),size:25,),
                 onPressed: () {
@@ -184,8 +190,7 @@ String updatedprice='';
               ),
               
               IconButton( icon: Icon(Icons.update,color:Color(0xE6F7AA23),size:25,),
-              onPressed: () 
-              {
+              onPressed: () {
                 String? keytoremove;
                  product.forEach((key, value)
                  {
@@ -196,7 +201,7 @@ String updatedprice='';
                   }
                  });
                 
-             showDialog<String>(
+                 showDialog<String>(
         context: context,
         builder: (BuildContext context) => AlertDialog(
           title: Text('You want to update ${keytoremove}'),
@@ -227,16 +232,6 @@ String updatedprice='';
                 });
               },
              initialValue: foundedresult[index]['image'] ),
-
-             TextFormField(
-             decoration: InputDecoration(labelText:'Product Price ',icon:Icon(Icons.price_change)),
-             onSaved:(newvalue)
-              {
-                setState(() {
-                  updatedprice = newvalue!;
-                });
-              },
-             initialValue: foundedresult[index]['price'] ),
             ],),
           )),
 
@@ -251,7 +246,7 @@ String updatedprice='';
                 if(_formkey.currentState!.validate())
                 {
                   _formkey.currentState!.save();
-                  print('Title: $updatedtitle, Image: $updatedimage,Price: $updatedprice');
+                  print('Title: $updatedtitle, Image: $updatedimage');
                 }
                 String? keytoremove;
                  product.forEach((key, value)
@@ -282,9 +277,14 @@ String updatedprice='';
             elevation: 5,
             margin: EdgeInsets.all(10),
           );
-           },
+
+          
+              },
             ),
-          ) : Text('no image found'), 
+            )
+            :Text('no image found'),
+    
+          
        ],
     ),
     );
