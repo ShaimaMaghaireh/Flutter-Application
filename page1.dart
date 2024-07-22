@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_application_2/main.dart';
-//import '../Flutter-Application/data.dart';
+import 'lib/data.dart';
 
 class newproduct
 {

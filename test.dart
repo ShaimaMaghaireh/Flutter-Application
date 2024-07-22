@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_application_2/main.dart';
 import 'page1.dart';
-import 'data.dart';
+import 'lib/data.dart';
 import 'newapp.dart';
 
 
