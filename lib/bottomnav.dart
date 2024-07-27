@@ -34,7 +34,9 @@ class _HomePageState extends State<HomePage>
     return Scaffold(
       appBar: AppBar(title:Text(' bottom navigation  '),),
         body: Center(
-          child: Text(''),),
+          child: Text(''),
+          ),
+
           bottomNavigationBar: BottomNavigationBar(
         items:const <BottomNavigationBarItem>[
           BottomNavigationBarItem(

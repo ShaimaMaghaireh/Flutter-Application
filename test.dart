@@ -80,7 +80,8 @@ String updatedprice='';
           child: CircleAvatar(
            radius: 55,
             backgroundImage: NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWlQ4x2xmTPgfq2OzGZAsxFjLpp0hjM1UALg&s'),
-        )),
+        )
+        ),
         title:Container(
           margin: EdgeInsets.only(left: 40,bottom: 10),
           child: Text('Flowers',style:TextStyle(color:Color.fromARGB(255, 60, 179, 234),fontSize:35))),
