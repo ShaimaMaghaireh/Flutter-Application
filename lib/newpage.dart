@@ -233,6 +233,7 @@ class  _newpagestate extends State <newpage>
                           onPressed:()
                         {
                          setState(() {
+                          
                             _iconColor= _iconColor==Colors.grey ?Color.fromARGB(255, 218, 211, 111):Colors.grey;
                              });
                         },
@@ -314,6 +315,7 @@ class  _newpagestate extends State <newpage>
            
           ],
         ),
+
         bottomNavigationBar:
             
                 BottomNavigationBar(
