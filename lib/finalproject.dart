@@ -455,13 +455,62 @@ class signUPpage extends StatefulWidget
 }
 class _HomePagestate extends State<HomePage>
 {   
-  
+  Color _iconColor=Colors.grey;
+  Color _iconColor1=Colors.grey;
+  Color _iconColor2=Colors.grey;
+  Color _iconColor3=Colors.grey;
+
+  int _selectedIndex = 0;
+  static const TextStyle optionStyle =
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static const List<Widget> _widgetOptions = <Widget>[
+    Text(
+      'Index 0: Home',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 1: Business',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 2: School',
+      style: optionStyle,
+    ),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
      @override
     
     Widget build(BuildContext context)
     {
       return Scaffold
       (
+        bottomNavigationBar: BottomNavigationBar(
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.schedule),
+            label: 'Schedule',
+          ),
+          BottomNavigationBarItem(
+            icon: IconButton(onPressed:(){
+               Navigator.push(context,MaterialPageRoute(builder: (context) => Loginpage()));
+            }, icon:Icon(Icons.favorite)),
+            label: 'Favorite',
+           
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.black,
+        onTap: _onItemTapped,
+      ),
         body:ListView(
           children: [
         Container(
@@ -487,19 +536,311 @@ class _HomePagestate extends State<HomePage>
                Radius.circular(15.0),
             ),
             borderSide: BorderSide(
-              color: Colors.black,
-              width: 5.0,
+              color: Colors.black, width: 5.0,
             ),
           ),
                ),
              ),
        ),
 
-       Row(
-        children: [
-          Text('Popular places',style:TextStyle(),)
-        ],
-       )
+       Container(
+        margin: EdgeInsets.all(20),
+         child: Row(
+          children: [
+          Text('Popular places',style:TextStyle(fontSize:15,color:Colors.black,fontWeight: FontWeight.bold),),
+         
+          Container(
+            margin: EdgeInsets.only(left: 130),
+            child: GestureDetector(
+            child:Text('View all',style:TextStyle(color:Colors.grey,fontWeight: FontWeight.bold)),
+            onTap: () {
+              print('here is all places');
+            },),
+          ),
+         
+          ],
+         ),
+       ),
+
+      Container(
+        width: 300,height: 100,
+        child: ListView(
+          scrollDirection: Axis.horizontal,
+          children: [
+            Row(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    print('object');
+               setState(() {
+              _iconColor= _iconColor==Colors.grey ?Colors.black:Colors.grey;
+                });
+                  },
+                  child:
+                Container(
+                  margin: EdgeInsets.only(left: 10),
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color: _iconColor,),
+                  width: 120,height:50,
+                  child: Text('Most Viewed',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold),),),),
+          
+           GestureDetector(
+                  onTap: () {
+                    print('object');
+               setState(() {
+              _iconColor1= _iconColor1==Colors.grey ?Colors.black:Colors.grey;
+                });
+                  },
+                  child:
+                Container(
+                  margin: EdgeInsets.only(left: 10),
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color: _iconColor1,),
+                  width: 120,height:50,
+                  child: Text('Most Viewed',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold),),),),
+               GestureDetector(
+                  onTap: () {
+                    print('object');
+               setState(() {
+              _iconColor2= _iconColor2==Colors.grey ?Colors.black:Colors.grey;
+                });
+                  },
+                  child:
+                Container(
+                  margin: EdgeInsets.only(left: 10),
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color: _iconColor2,),
+                  width: 120,height:50,
+                  child: Text('Most Viewed',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold),),),),
+               
+               GestureDetector(
+                  onTap: () {
+                    print('object');
+               setState(() {
+              _iconColor3= _iconColor3==Colors.grey ?Colors.black:Colors.grey;
+                });
+                  },
+                  child:
+                Container(
+                  margin: EdgeInsets.only(left: 10),
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color: _iconColor3,),
+                  width: 120,height:50,
+                  child: Text('Most Viewed',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold),),),),
+
+              ],
+            )
+          ],
+        ),
+      ),
+      Container(
+        width: 300,height: 500,
+        child: ListView(
+          scrollDirection: Axis.horizontal,
+          children: [
+            Row(children: [
+           GestureDetector(
+            onDoubleTap: () {
+              print('fuji');
+            },
+             child: Card(
+              clipBehavior: Clip.antiAliasWithSaveLayer,
+              child:Stack(
+                children: [
+              Image.network(
+              'https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/view-of-mount-fuji-with-cherry-blossom-tanatat-pongphibool-thailand.jpg',
+              fit: BoxFit.fill,width:320,height: 400,
+              ),
+              Positioned(child:IconButton(
+                 style: IconButton.styleFrom(backgroundColor: Colors.grey.withOpacity(0.4)),
+                onPressed: (){}, 
+              icon:Icon(Icons.favorite_border_outlined),iconSize:35,color:Colors.white,),
+              left: 250,top: 16,
+              ),
+              Positioned(
+                top: 250,
+                child: Container(
+                 padding: EdgeInsets.all(15),
+                width:250,height:100,margin: EdgeInsets.all(30),
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color:const Color.fromARGB(255, 19, 96, 134).withOpacity(0.8)),
+                child:Column(children: [
+                  Row(children: [Text('Mount Fuji',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold),),
+                  ],),
+                  SizedBox(height: 10,),
+                  Row(children: [Icon(Icons.location_on_outlined,color: Colors.white,),
+                  SizedBox(width: 20,),Text('Japan,Tokyo',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold)),
+                   SizedBox(width: 20,),Icon(Icons.star_border_outlined,color: Colors.white,),
+                   Text('4.9',style: TextStyle(color:Colors.white,fontSize:15))],)
+                ],), )) ],),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30.0),
+              ),
+              elevation: 5,margin: EdgeInsets.all(10),
+             ),),
+
+              GestureDetector(
+            onDoubleTap: () {
+              print('fuji');
+            },
+             child: Card(
+              clipBehavior: Clip.antiAliasWithSaveLayer,
+              child:Stack(
+                children: [
+              Image.network(
+              'https://peakvisor.com/photo/chimborazo.jpg',
+              fit: BoxFit.fill,width:320,height: 400,
+              ),
+              Positioned(child:IconButton(
+                 style: IconButton.styleFrom(backgroundColor: Colors.grey.withOpacity(0.4)),
+                onPressed: (){}, 
+              icon:Icon(Icons.favorite_border_outlined),iconSize:35,color:Colors.white,),
+              left: 250,top: 16,
+              ),
+              Positioned(
+                top: 250,
+                child: Container(
+                 padding: EdgeInsets.all(15),
+                width:250,height:100,margin: EdgeInsets.all(30),
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color:const Color.fromARGB(255, 19, 96, 134).withOpacity(0.8)),
+                child:Column(children: [
+                  Row(children: [Text('Andes Mountains',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold),),
+                  ],),
+                  SizedBox(height: 10,),
+                  Row(children: [Icon(Icons.location_on_outlined,color: Colors.white,),
+                  SizedBox(width: 20,),Text('South America',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold)),
+                   SizedBox(width: 10,),Icon(Icons.star_border_outlined,color: Colors.white,),
+                   Text('4.9',style: TextStyle(color:Colors.white,fontSize:15))],)
+                ],), )) ],),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30.0),
+              ),
+              elevation: 5,margin: EdgeInsets.all(10),
+             ),),
+              GestureDetector(
+            onDoubleTap: () {
+              print('fuji');
+            },
+             child: Card(
+              clipBehavior: Clip.antiAliasWithSaveLayer,
+              child:Stack(
+                children: [
+              Image.network(
+              'https://static.toiimg.com/photo/108206552/108206552.jpg',
+              fit: BoxFit.fill,width:320,height: 400,
+              ),
+              Positioned(child:IconButton(
+                 style: IconButton.styleFrom(backgroundColor: Colors.grey.withOpacity(0.4)),
+                onPressed: (){}, 
+              icon:Icon(Icons.favorite_border_outlined),iconSize:35,color:Colors.white,),
+              left: 250,top: 16,
+              ),
+              Positioned(
+                top: 250,
+                child: Container(
+                 padding: EdgeInsets.all(15),
+                width:250,height:100,margin: EdgeInsets.all(30),
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color:const Color.fromARGB(255, 19, 96, 134).withOpacity(0.8)),
+                child:Column(children: [
+                  Row(children: [Text('Alps',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold),),
+                  ],),
+                  SizedBox(height: 10,),
+                  Row(children: [Icon(Icons.location_on_outlined,color: Colors.white,),
+                  SizedBox(width: 20,),Text('Switzerland',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold)),
+                   SizedBox(width: 20,),Icon(Icons.star_border_outlined,color: Colors.white,),
+                   Text('4.9',style: TextStyle(color:Colors.white,fontSize:15))],)
+                ],), )) ],),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30.0),
+              ),
+              elevation: 5,margin: EdgeInsets.all(10),
+             ),),
+              GestureDetector(
+            onDoubleTap: () {
+              print('fuji');
+            },
+             child: Card(
+              clipBehavior: Clip.antiAliasWithSaveLayer,
+              child:Stack(
+                children: [
+              Image.network(
+              'https://i.redd.it/77t86nlexij91.jpg',
+              fit: BoxFit.fill,width:320,height: 400,
+              ),
+              Positioned(child:IconButton(
+                 style: IconButton.styleFrom(backgroundColor: Colors.grey.withOpacity(0.4)),
+                onPressed: (){}, 
+              icon:Icon(Icons.favorite_border_outlined),iconSize:35,color:Colors.white,),
+              left: 250,top: 16,
+              ),
+              Positioned(
+                top: 250,
+                child: Container(
+                 padding: EdgeInsets.all(15),
+                width:250,height:100,margin: EdgeInsets.all(30),
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color:const Color.fromARGB(255, 19, 96, 134).withOpacity(0.8)),
+                child:Column(children: [
+                  Row(children: [Text('Mount Kilimanjaro',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold),),
+                  ],),
+                  SizedBox(height: 10,),
+                  Row(children: [Icon(Icons.location_on_outlined,color: Colors.white,),
+                  SizedBox(width: 20,),Text('Tanzania',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold)),
+                   SizedBox(width: 20,),Icon(Icons.star_border_outlined,color: Colors.white,),
+                   Text('4.9',style: TextStyle(color:Colors.white,fontSize:15))],)
+                ],), )) ],),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30.0),
+              ),
+              elevation: 5,margin: EdgeInsets.all(10),
+             ),),
+              GestureDetector(
+            onDoubleTap: () {
+              print('fuji');
+            },
+             child: Card(
+              clipBehavior: Clip.antiAliasWithSaveLayer,
+              child:Stack(
+                children: [
+              Image.network(
+              'https://i.pinimg.com/736x/e5/e2/b8/e5e2b898590e40c13d3ebfeee047aebe.jpg',
+              fit: BoxFit.fill,width:320,height: 400,
+              ),
+              Positioned(child:IconButton(
+                 style: IconButton.styleFrom(backgroundColor: Colors.grey.withOpacity(0.4)),
+                onPressed: (){}, 
+              icon:Icon(Icons.favorite_border_outlined),iconSize:35,color:Colors.white,),
+              left: 250,top: 16,
+              ),
+              Positioned(
+                top: 250,
+                child: Container(
+                 padding: EdgeInsets.all(15),
+                width:250,height:100,margin: EdgeInsets.all(30),
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color:const Color.fromARGB(255, 19, 96, 134).withOpacity(0.8)),
+                child:Column(children: [
+                  Row(children: [Text('Mount Fuji,',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold),),
+                  Text('Tokyo',style: TextStyle(color:Colors.white),)
+                  ],),
+                  SizedBox(height: 10,),
+                  Row(children: [Icon(Icons.location_on_outlined,color: Colors.white,),
+                  SizedBox(width: 20,),Text('Japan,Tokyo',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold)),
+                   SizedBox(width: 20,),Icon(Icons.star_border_outlined,color: Colors.white,),
+                   Text('4.9',style: TextStyle(color:Colors.white,fontSize:15))],)
+                ],), )) ],),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30.0),
+              ),
+              elevation: 5,margin: EdgeInsets.all(10),
+             ),),
+             
+             ],
+            ),
+
+          ],
+        ),
+      ),
+
+      
+      
        
 
           ],
