@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
-import 'morepages.dart';
-import 'bottomnavigatpages.dart';
 void main()
 {
   runApp(MyApp());
@@ -15,14 +13,6 @@ class MyApp extends StatelessWidget
   {
     return MaterialApp(
       home: firstpage(),
-      routes:{
-        '/morepages':(context) => MostViewedPage(),
-         '/morepages':(context) => LatestaddPage(),
-          '/morepages':(context) => NearbyPage(),
-           '/morepages':(context) => RecomendedPage(),
-           '/bottomnavigatpages':(context) => RecomendedPage(),
-      },
-      initialRoute:'/morepages' ,
     );
   }
 }
@@ -506,6 +496,10 @@ Map places={
     });
   }
   bool isFavorite = false;
+
+  List<String> items = ['Item 1', 'Item 2', 'Item 3']; // List of items
+  List<String> favoriteItems = []; // List to hold favorite items
+
      @override
     
     Widget build(BuildContext context)
@@ -524,12 +518,12 @@ Map places={
           ),
           BottomNavigationBarItem(
             icon: IconButton(onPressed:(){
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => FavoritesPage(isFavorite: isFavorite),
-                ),
-              );
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(
+              //     builder: (context) => FavoritesPage(isFavorite: isFavorite),
+              //   ),
+              // );
             }, icon:Icon(Icons.favorite)),
             label: 'Favorite',
            
@@ -596,7 +590,6 @@ Map places={
               children: [
                 GestureDetector(
                   onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => MostViewedPage()));
                setState(() {
               _iconColor= _iconColor==Colors.grey ?Colors.black:Colors.grey;
                 });
@@ -611,7 +604,7 @@ Map places={
           
            GestureDetector(
                   onTap: () {
-                     Navigator.push(context, MaterialPageRoute(builder: (context) => NearbyPage()));
+                    print('object');
                setState(() {
               _iconColor1= _iconColor1==Colors.grey ?Colors.black:Colors.grey;
                 });
@@ -625,7 +618,7 @@ Map places={
                   child: Text('Nearby',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold),textAlign:TextAlign.center,),),),
                GestureDetector(
                   onTap: () {
-                   Navigator.push(context, MaterialPageRoute(builder: (context) => LatestaddPage()));
+                    print('object');
                setState(() {
               _iconColor2= _iconColor2==Colors.grey ?Colors.black:Colors.grey;
                 });
@@ -640,11 +633,11 @@ Map places={
                
                GestureDetector(
                   onTap: () {
-                 Navigator.push(context, MaterialPageRoute(builder: (context) => RecomendedPage()));
-                     setState(() {
+                    print('object');
+               setState(() {
               _iconColor3= _iconColor3==Colors.grey ?Colors.black:Colors.grey;
                 });
-                 },
+                  },
                   child:
                 Container(
                   margin: EdgeInsets.only(left: 10),
@@ -658,215 +651,242 @@ Map places={
           ],
         ),
       ),
-      Container(
-        width: 300,height: 500,
-        child: ListView(
-          scrollDirection: Axis.horizontal,
-          children: [
-            Row(children: [
-           GestureDetector(
-            onDoubleTap: () {
-              print('fuji');
-            },
-             child: Card(
-              clipBehavior: Clip.antiAliasWithSaveLayer,
-              child:Stack(
-                children: [
-              Image.network(
-              'https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/view-of-mount-fuji-with-cherry-blossom-tanatat-pongphibool-thailand.jpg',
-              fit: BoxFit.fill,width:320,height: 400,
-              ),
-              Positioned(child:IconButton(
-                 style: IconButton.styleFrom(backgroundColor: Colors.grey.withOpacity(0.4)),
-                onPressed: (){
-                setState(() {
-                  isFavorite = !isFavorite;
-                });
-                }, 
-              icon:Icon(isFavorite ? Icons.favorite : Icons.favorite_border,
-              color: isFavorite ? Colors.red : null,),
-              iconSize:35,color:Colors.white,),
-              left: 250,top: 16,
-              ),
-              Positioned(
-                top: 250,
-                child: Container(
-                 padding: EdgeInsets.all(15),
-                width:250,height:100,margin: EdgeInsets.all(30),
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color:const Color.fromARGB(255, 19, 96, 134).withOpacity(0.8)),
-                child:Column(children: [
-                  Row(children: [Text('Mount Fuji',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold),),
-                  ],),
-                  SizedBox(height: 10,),
-                  Row(children: [Icon(Icons.location_on_outlined,color: Colors.white,),
-                  SizedBox(width: 20,),Text('Japan,Tokyo',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold)),
-                   SizedBox(width: 20,),Icon(Icons.star_border_outlined,color: Colors.white,),
-                   Text('4.9',style: TextStyle(color:Colors.white,fontSize:15))],)
-                ],), )) ],),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30.0),
-              ),
-              elevation: 5,margin: EdgeInsets.all(10),shadowColor: Color.fromARGB(255, 37, 0, 158),
-             ),),
 
-              GestureDetector(
-            onDoubleTap: () {
-              print('fuji');
-            },
-             child: Card(
-              clipBehavior: Clip.antiAliasWithSaveLayer,
-              child:Stack(
-                children: [
-              Image.network(
-              'https://peakvisor.com/photo/chimborazo.jpg',
-              fit: BoxFit.fill,width:320,height: 400,
-              ),
-              Positioned(child:IconButton(
-                 style: IconButton.styleFrom(backgroundColor: Colors.grey.withOpacity(0.4)),
-                onPressed: (){}, 
-              icon:Icon(Icons.favorite_border_outlined),iconSize:35,color:Colors.white,),
-              left: 250,top: 16,
-              ),
-              Positioned(
-                top: 250,
-                child: Container(
-                 padding: EdgeInsets.all(15),
-                width:250,height:100,margin: EdgeInsets.all(30),
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color:const Color.fromARGB(255, 19, 96, 134).withOpacity(0.8)),
-                child:Column(children: [
-                  Row(children: [Text('Andes Mountains',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold),),
-                  ],),
-                  SizedBox(height: 10,),
-                  Row(children: [Icon(Icons.location_on_outlined,color: Colors.white,),
-                  SizedBox(width: 20,),Text('South America',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold)),
-                   SizedBox(width: 10,),Icon(Icons.star_border_outlined,color: Colors.white,),
-                   Text('4.9',style: TextStyle(color:Colors.white,fontSize:15))],)
-                ],), )) ],),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30.0),
-              ),
-              elevation: 5,margin: EdgeInsets.all(10),shadowColor: Color.fromARGB(255, 37, 0, 158),
-             ),),
-              GestureDetector(
-            onDoubleTap: () {
-              print('fuji');
-            },
-             child: Card(
-              clipBehavior: Clip.antiAliasWithSaveLayer,
-              child:Stack(
-                children: [
-              Image.network(
-              'https://static.toiimg.com/photo/108206552/108206552.jpg',
-              fit: BoxFit.fill,width:320,height: 400,
-              ),
-              Positioned(child:IconButton(
-                 style: IconButton.styleFrom(backgroundColor: Colors.grey.withOpacity(0.4)),
-                onPressed: (){}, 
-              icon:Icon(Icons.favorite_border_outlined),iconSize:35,color:Colors.white,),
-              left: 250,top: 16,
-              ),
-              Positioned(
-                top: 250,
-                child: Container(
-                 padding: EdgeInsets.all(15),
-                width:250,height:100,margin: EdgeInsets.all(30),
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color:const Color.fromARGB(255, 19, 96, 134).withOpacity(0.8)),
-                child:Column(children: [
-                  Row(children: [Text('Alps',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold),),
-                  ],),
-                  SizedBox(height: 10,),
-                  Row(children: [Icon(Icons.location_on_outlined,color: Colors.white,),
-                  SizedBox(width: 20,),Text('Switzerland',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold)),
-                   SizedBox(width: 20,),Icon(Icons.star_border_outlined,color: Colors.white,),
-                   Text('4.9',style: TextStyle(color:Colors.white,fontSize:15))],)
-                ],), )) ],),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30.0),
-              ),
-              elevation: 5,margin: EdgeInsets.all(10),shadowColor: Color.fromARGB(255, 37, 0, 158),
-             ),),
-              GestureDetector(
-            onDoubleTap: () {
-              print('fuji');
-            },
-             child: Card(
-              clipBehavior: Clip.antiAliasWithSaveLayer,
-              child:Stack(
-                children: [
-              Image.network(
-              'https://i.redd.it/77t86nlexij91.jpg',
-              fit: BoxFit.fill,width:320,height: 400,
-              ),
-              Positioned(child:IconButton(
-                 style: IconButton.styleFrom(backgroundColor: Colors.grey.withOpacity(0.4)),
-                onPressed: (){}, 
-              icon:Icon(Icons.favorite_border_outlined),iconSize:35,color:Colors.white,),
-              left: 250,top: 16,
-              ),
-              Positioned(
-                top: 250,
-                child: Container(
-                 padding: EdgeInsets.all(15),
-                width:250,height:100,margin: EdgeInsets.all(30),
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color:const Color.fromARGB(255, 19, 96, 134).withOpacity(0.8)),
-                child:Column(children: [
-                  Row(children: [Text('Mount Kilimanjaro',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold),),
-                  ],),
-                  SizedBox(height: 10,),
-                  Row(children: [Icon(Icons.location_on_outlined,color: Colors.white,),
-                  SizedBox(width: 20,),Text('Tanzania',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold)),
-                   SizedBox(width: 20,),Icon(Icons.star_border_outlined,color: Colors.white,),
-                   Text('4.9',style: TextStyle(color:Colors.white,fontSize:15))],)
-                ],), )) ],),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30.0),
-              ),
-              elevation: 5,margin: EdgeInsets.all(10),shadowColor: Color.fromARGB(255, 37, 0, 158),
-             ),),
-              GestureDetector(
-            onDoubleTap: () {
-              print('fuji');
-            },
-             child: Card(
-              clipBehavior: Clip.antiAliasWithSaveLayer,
-              child:Stack(
-                children: [
-              Image.network(
-              'https://i.pinimg.com/736x/e5/e2/b8/e5e2b898590e40c13d3ebfeee047aebe.jpg',
-              fit: BoxFit.fill,width:320,height: 400,
-              ),
-              Positioned(child:IconButton(
-                 style: IconButton.styleFrom(backgroundColor: Colors.grey.withOpacity(0.4)),
-                onPressed: (){}, 
-              icon:Icon(Icons.favorite_border_outlined),iconSize:35,color:Colors.white,),
-              left: 250,top: 16,
-              ),
-              Positioned(
-                top: 250,
-                child: Container(
-                 padding: EdgeInsets.all(15),
-                width:250,height:100,margin: EdgeInsets.all(30),
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color:const Color.fromARGB(255, 19, 96, 134).withOpacity(0.8)),
-                child:Column(children: [
-                  Row(children: [Text('Mount Fuji,',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold),),
-                  Text('Tokyo',style: TextStyle(color:Colors.white),)
-                  ],),
-                  SizedBox(height: 10,),
-                  Row(children: [Icon(Icons.location_on_outlined,color: Colors.white,),
-                  SizedBox(width: 20,),Text('Japan,Tokyo',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold)),
-                   SizedBox(width: 20,),Icon(Icons.star_border_outlined,color: Colors.white,),
-                   Text('4.9',style: TextStyle(color:Colors.white,fontSize:15))],)
-                ],), )) ],),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30.0),
-              ),
-              elevation: 5,margin: EdgeInsets.all(10),shadowColor: Color.fromARGB(255, 37, 0, 158),
-             ),),
-              ],),
-          ],
-        ),
-      ),
-        Text('data'),
+      
+
+      //  ListView.builder(
+      //     itemCount: items.length,
+      //     itemBuilder: (context, index) {
+      //       final item = items[index];
+      //       return ListTile(
+      //         title: Text(item),
+      //         trailing: IconButton(
+      //           icon: Icon(
+      //             favoriteItems.contains(item) ? Icons.favorite : Icons.favorite_border,
+      //             color: favoriteItems.contains(item) ? Colors.red : null,
+      //           ),
+      //           onPressed: () {
+      //             setState(() {
+      //               if (favoriteItems.contains(item)) {
+      //                 favoriteItems.remove(item);
+      //               } else {
+      //                 favoriteItems.add(item);
+      //               }
+      //             });
+      //           },
+      //         ),
+      //       );
+      //     },
+      //    ),
+       
+      // Container(
+      //   width: 300,height: 500,
+      //   child: ListView(
+      //     scrollDirection: Axis.horizontal,
+      //     children: [
+      //       Row(children: [
+      //      GestureDetector(
+      //       onDoubleTap: () {
+      //         print('fuji');
+      //       },
+      //        child: Card(
+      //         clipBehavior: Clip.antiAliasWithSaveLayer,
+      //         child:Stack(
+      //           children: [
+      //         Image.network(
+      //         'https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/view-of-mount-fuji-with-cherry-blossom-tanatat-pongphibool-thailand.jpg',
+      //         fit: BoxFit.fill,width:320,height: 400,
+      //         ),
+      //         Positioned(child:IconButton(
+      //            style: IconButton.styleFrom(backgroundColor: Colors.grey.withOpacity(0.4)),
+      //           onPressed: (){
+      //           setState(() {
+      //             isFavorite = !isFavorite;
+      //           });
+      //           }, 
+      //         icon:Icon(isFavorite ? Icons.favorite : Icons.favorite_border,
+      //         color: isFavorite ? Colors.red : null,),
+      //         iconSize:35,color:Colors.white,),
+      //         left: 250,top: 16,
+      //         ),
+      //         Positioned(
+      //           top: 250,
+      //           child: Container(
+      //            padding: EdgeInsets.all(15),
+      //           width:250,height:100,margin: EdgeInsets.all(30),
+      //           decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color:const Color.fromARGB(255, 19, 96, 134).withOpacity(0.8)),
+      //           child:Column(children: [
+      //             Row(children: [Text('Mount Fuji',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold),),
+      //             ],),
+      //             SizedBox(height: 10,),
+      //             Row(children: [Icon(Icons.location_on_outlined,color: Colors.white,),
+      //             SizedBox(width: 20,),Text('Japan,Tokyo',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold)),
+      //              SizedBox(width: 20,),Icon(Icons.star_border_outlined,color: Colors.white,),
+      //              Text('4.9',style: TextStyle(color:Colors.white,fontSize:15))],)
+      //           ],), )) ],),
+      //         shape: RoundedRectangleBorder(
+      //           borderRadius: BorderRadius.circular(30.0),
+      //         ),
+      //         elevation: 5,margin: EdgeInsets.all(10),shadowColor: Color.fromARGB(255, 37, 0, 158),
+      //        ),),
+
+      //         GestureDetector(
+      //       onDoubleTap: () {
+      //         print('fuji');
+      //       },
+      //        child: Card(
+      //         clipBehavior: Clip.antiAliasWithSaveLayer,
+      //         child:Stack(
+      //           children: [
+      //         Image.network(
+      //         'https://peakvisor.com/photo/chimborazo.jpg',
+      //         fit: BoxFit.fill,width:320,height: 400,
+      //         ),
+      //         Positioned(child:IconButton(
+      //            style: IconButton.styleFrom(backgroundColor: Colors.grey.withOpacity(0.4)),
+      //           onPressed: (){}, 
+      //         icon:Icon(Icons.favorite_border_outlined),iconSize:35,color:Colors.white,),
+      //         left: 250,top: 16,
+      //         ),
+      //         Positioned(
+      //           top: 250,
+      //           child: Container(
+      //            padding: EdgeInsets.all(15),
+      //           width:250,height:100,margin: EdgeInsets.all(30),
+      //           decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color:const Color.fromARGB(255, 19, 96, 134).withOpacity(0.8)),
+      //           child:Column(children: [
+      //             Row(children: [Text('Andes Mountains',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold),),
+      //             ],),
+      //             SizedBox(height: 10,),
+      //             Row(children: [Icon(Icons.location_on_outlined,color: Colors.white,),
+      //             SizedBox(width: 20,),Text('South America',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold)),
+      //              SizedBox(width: 10,),Icon(Icons.star_border_outlined,color: Colors.white,),
+      //              Text('4.9',style: TextStyle(color:Colors.white,fontSize:15))],)
+      //           ],), )) ],),
+      //         shape: RoundedRectangleBorder(
+      //           borderRadius: BorderRadius.circular(30.0),
+      //         ),
+      //         elevation: 5,margin: EdgeInsets.all(10),shadowColor: Color.fromARGB(255, 37, 0, 158),
+      //        ),),
+      //         GestureDetector(
+      //       onDoubleTap: () {
+      //         print('fuji');
+      //       },
+      //        child: Card(
+      //         clipBehavior: Clip.antiAliasWithSaveLayer,
+      //         child:Stack(
+      //           children: [
+      //         Image.network(
+      //         'https://static.toiimg.com/photo/108206552/108206552.jpg',
+      //         fit: BoxFit.fill,width:320,height: 400,
+      //         ),
+      //         Positioned(child:IconButton(
+      //            style: IconButton.styleFrom(backgroundColor: Colors.grey.withOpacity(0.4)),
+      //           onPressed: (){}, 
+      //         icon:Icon(Icons.favorite_border_outlined),iconSize:35,color:Colors.white,),
+      //         left: 250,top: 16,
+      //         ),
+      //         Positioned(
+      //           top: 250,
+      //           child: Container(
+      //            padding: EdgeInsets.all(15),
+      //           width:250,height:100,margin: EdgeInsets.all(30),
+      //           decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color:const Color.fromARGB(255, 19, 96, 134).withOpacity(0.8)),
+      //           child:Column(children: [
+      //             Row(children: [Text('Alps',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold),),
+      //             ],),
+      //             SizedBox(height: 10,),
+      //             Row(children: [Icon(Icons.location_on_outlined,color: Colors.white,),
+      //             SizedBox(width: 20,),Text('Switzerland',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold)),
+      //              SizedBox(width: 20,),Icon(Icons.star_border_outlined,color: Colors.white,),
+      //              Text('4.9',style: TextStyle(color:Colors.white,fontSize:15))],)
+      //           ],), )) ],),
+      //         shape: RoundedRectangleBorder(
+      //           borderRadius: BorderRadius.circular(30.0),
+      //         ),
+      //         elevation: 5,margin: EdgeInsets.all(10),shadowColor: Color.fromARGB(255, 37, 0, 158),
+      //        ),),
+      //         GestureDetector(
+      //       onDoubleTap: () {
+      //         print('fuji');
+      //       },
+      //        child: Card(
+      //         clipBehavior: Clip.antiAliasWithSaveLayer,
+      //         child:Stack(
+      //           children: [
+      //         Image.network(
+      //         'https://i.redd.it/77t86nlexij91.jpg',
+      //         fit: BoxFit.fill,width:320,height: 400,
+      //         ),
+      //         Positioned(child:IconButton(
+      //            style: IconButton.styleFrom(backgroundColor: Colors.grey.withOpacity(0.4)),
+      //           onPressed: (){}, 
+      //         icon:Icon(Icons.favorite_border_outlined),iconSize:35,color:Colors.white,),
+      //         left: 250,top: 16,
+      //         ),
+      //         Positioned(
+      //           top: 250,
+      //           child: Container(
+      //            padding: EdgeInsets.all(15),
+      //           width:250,height:100,margin: EdgeInsets.all(30),
+      //           decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color:const Color.fromARGB(255, 19, 96, 134).withOpacity(0.8)),
+      //           child:Column(children: [
+      //             Row(children: [Text('Mount Kilimanjaro',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold),),
+      //             ],),
+      //             SizedBox(height: 10,),
+      //             Row(children: [Icon(Icons.location_on_outlined,color: Colors.white,),
+      //             SizedBox(width: 20,),Text('Tanzania',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold)),
+      //              SizedBox(width: 20,),Icon(Icons.star_border_outlined,color: Colors.white,),
+      //              Text('4.9',style: TextStyle(color:Colors.white,fontSize:15))],)
+      //           ],), )) ],),
+      //         shape: RoundedRectangleBorder(
+      //           borderRadius: BorderRadius.circular(30.0),
+      //         ),
+      //         elevation: 5,margin: EdgeInsets.all(10),shadowColor: Color.fromARGB(255, 37, 0, 158),
+      //        ),),
+      //         GestureDetector(
+      //       onDoubleTap: () {
+      //         print('fuji');
+      //       },
+      //        child: Card(
+      //         clipBehavior: Clip.antiAliasWithSaveLayer,
+      //         child:Stack(
+      //           children: [
+      //         Image.network(
+      //         'https://i.pinimg.com/736x/e5/e2/b8/e5e2b898590e40c13d3ebfeee047aebe.jpg',
+      //         fit: BoxFit.fill,width:320,height: 400,
+      //         ),
+      //         Positioned(child:IconButton(
+      //            style: IconButton.styleFrom(backgroundColor: Colors.grey.withOpacity(0.4)),
+      //           onPressed: (){}, 
+      //         icon:Icon(Icons.favorite_border_outlined),iconSize:35,color:Colors.white,),
+      //         left: 250,top: 16,
+      //         ),
+      //         Positioned(
+      //           top: 250,
+      //           child: Container(
+      //            padding: EdgeInsets.all(15),
+      //           width:250,height:100,margin: EdgeInsets.all(30),
+      //           decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color:const Color.fromARGB(255, 19, 96, 134).withOpacity(0.8)),
+      //           child:Column(children: [
+      //             Row(children: [Text('Mount Fuji,',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold),),
+      //             Text('Tokyo',style: TextStyle(color:Colors.white),)
+      //             ],),
+      //             SizedBox(height: 10,),
+      //             Row(children: [Icon(Icons.location_on_outlined,color: Colors.white,),
+      //             SizedBox(width: 20,),Text('Japan,Tokyo',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold)),
+      //              SizedBox(width: 20,),Icon(Icons.star_border_outlined,color: Colors.white,),
+      //              Text('4.9',style: TextStyle(color:Colors.white,fontSize:15))],)
+      //           ],), )) ],),
+      //         shape: RoundedRectangleBorder(
+      //           borderRadius: BorderRadius.circular(30.0),
+      //         ),
+      //         elevation: 5,margin: EdgeInsets.all(10),shadowColor: Color.fromARGB(255, 37, 0, 158),
+      //        ),),
+      //         ],),
+      //     ],
+      //   ),
+      // ),
 
       
       
@@ -876,4 +896,31 @@ Map places={
         )
       );
     }
+}
+
+class FavoritesPage extends StatefulWidget
+{
+  // final bool isFavorite;
+  // FavoritesPage({required this.isFavorite});
+
+   final List<String> favoriteItems;
+
+  FavoritesPage({required this.favoriteItems});
+  @override
+  State <FavoritesPage> createState() => _FavoritesPagestate(); 
+}
+class _FavoritesPagestate extends State<FavoritesPage>
+{
+   @override
+   Widget build(BuildContext context)
+   {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Favorites Page'),
+      ),
+      body: Center(
+      )
+    );
+   }
+  
 }
