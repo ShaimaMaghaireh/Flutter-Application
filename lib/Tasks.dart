@@ -46,6 +46,15 @@ void deleteCard(int index)
       foundedresult.removeAt(index);
     });
 }
+
+final Map<String,String> items=
+{
+  'apple':'a fruit',
+  'banana':'a fruit', 
+};
+
+List<String> searchResult=[];
+String searchQuery='';
 // Map product={
 // 'Sun flower':{'title':'this is sun flower','image':'https://www.highmowingseeds.com/media/catalog/product/cache/6cbdb003cf4aae33b9be8e6a6cf3d7ad/7/1/7104-1.jpg'},
 
@@ -108,7 +117,6 @@ String updatedimage='';
             {
               List productList=product.keys.toList();
               List result=[];
-              //? print(productList);
               bool found=false;
               for(var i=0;i<productList.length;i++)
               {
