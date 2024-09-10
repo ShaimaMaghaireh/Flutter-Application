@@ -1116,12 +1116,6 @@ class _RecomendedPagestate extends State<RecomendedPage>
           ),
           BottomNavigationBarItem(
             icon: IconButton(onPressed:(){
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) => FavoritesPage(isFavorite: isFavorite),
-              //   ),
-              // ); Icon(Icons.home),
             }, icon:Icon(Icons.favorite)),
             label: 'Favorite',
            
