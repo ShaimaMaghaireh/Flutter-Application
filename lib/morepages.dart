@@ -621,7 +621,6 @@ class _LatestaddPagestate extends State<LatestaddPage>
               Container(
               width: 300,height: 500,
               child: ListView(
-                // scrollDirection: Axis.horizontal,
                 children: [
                  GestureDetector(
                   onDoubleTap: () {
