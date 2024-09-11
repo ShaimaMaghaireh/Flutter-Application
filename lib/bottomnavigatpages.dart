@@ -60,3 +60,4 @@ class _FavoritesPagestate extends State<FavoritesPage>
    }
   
 }
+

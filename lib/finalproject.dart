@@ -495,15 +495,6 @@ Map places=
 'Jadara':{'title':'Jadara(Umm Qais)','location':'Jordan,Irbid','image':'https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/11/5b/b8/2d.jpg'}
 };
 
-final Map<String,String> items=
-{
-  'apple':'a fruit',
-  'banana':'a fruit', 
-};
-
-List<String> searchResult=[];
-String searchQuery='';
-
 final GlobalKey <FormState> _key=GlobalKey();
 List  foundedresult=[]; 
 
@@ -608,14 +599,7 @@ List  foundedresult=[];
               setState(() {
               foundedresult=result;
                result=places.keys.toList();
-                // print(foundedresult);
-                // print(foundedresult.isEmpty);
               });   
-
-            // setState(() {
-            //   searchQuery=x;
-            //   searchResult=items.keys.where((key)=> key.contains(searchQuery.toLowerCase())).toList();
-            // });
           },
            decoration: InputDecoration(
           hintText: 'Search places',
@@ -818,7 +802,8 @@ List  foundedresult=[];
                 borderRadius: BorderRadius.circular(30.0),
               ),
               elevation: 5,margin: EdgeInsets.all(10),shadowColor: Color.fromARGB(255, 37, 0, 158),
-             ),),
+             ),
+             ),
 
               GestureDetector(
             onDoubleTap: () {},
@@ -934,7 +919,7 @@ List  foundedresult=[];
              ),),
               GestureDetector(
             onDoubleTap: () {
-              print('fuji');
+             Navigator.push(context, MaterialPageRoute(builder: (context) => InformationPage()));
             },
              child: Card(
               clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -979,4 +964,114 @@ List  foundedresult=[];
         )
       );
     }
+}
+
+class InformationPage extends StatefulWidget
+{
+  @override
+  State <InformationPage> createState() => _InformationPagestate(); 
+}
+class _InformationPagestate extends State<InformationPage>
+{
+   @override
+   Widget build(BuildContext context)
+   {
+    return Scaffold(
+      appBar: AppBar(title:Text('Information Page'),),
+      body:Center(child:ListView(
+        children: [
+          Center(
+            child: Container(
+              width:300,height:800,
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(30),color:Color.fromARGB(255, 159, 189, 229).withOpacity(0.7)),
+              child: Stack(
+               children: [
+                 Positioned(child: Card(
+              clipBehavior: Clip.antiAliasWithSaveLayer,
+              child:Stack(
+                children: [
+              Image.network(
+              'https://i.pinimg.com/736x/e5/e2/b8/e5e2b898590e40c13d3ebfeee047aebe.jpg',
+              fit: BoxFit.fill,width:300,height: 300,
+              ),
+              Positioned(child:IconButton(
+                 style: IconButton.styleFrom(backgroundColor: Colors.grey.withOpacity(0.4)),
+                onPressed: (){
+                  Navigator.pop(context);
+                }, 
+              icon:Icon(Icons.arrow_back_ios_outlined),iconSize:25,color:Colors.white,),
+              left: 15,
+              top: 16,
+              ),
+              Positioned(
+                top: 150,
+                child: Container(
+                 padding: EdgeInsets.all(15),
+                width:250,height:100,margin: EdgeInsets.only(left:15,top:28),
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color:const Color.fromARGB(255, 19, 96, 134).withOpacity(0.8)),
+                child:Column(children: [
+                  Row(children: [Text('Himilaya Mountains,Asia',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold),),
+                  Text('',style: TextStyle(color:Colors.white),)
+                  ],),
+                  SizedBox(height: 10,),
+                  Row(children: [Icon(Icons.location_on_outlined,color: Colors.white,),
+                  SizedBox(width: 20,),Text('China',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold)),
+                   SizedBox(width: 20,),Icon(Icons.attach_money,color: Colors.white,),
+                   Text('300',style: TextStyle(color:Colors.white,fontSize:15))],)
+                ],), )) ],),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30.0),
+              ),
+              elevation: 5,margin: EdgeInsets.all(10),shadowColor: Color.fromARGB(255, 37, 0, 158),
+             ),
+             ),
+
+             Positioned(
+              left:11,top:330,
+              child:Container(
+              decoration:BoxDecoration(borderRadius: BorderRadius.circular(15),
+              color: Colors.transparent
+              ),
+              width:280,height: 400,
+              child:Column(children:
+               [
+                Row(children: [ SizedBox (width: 10,) 
+                ,Text('Overview',style:TextStyle(fontSize:20,fontWeight: FontWeight.bold),)],),
+                 SizedBox (height: 10,),
+                Row(children: [
+                 SizedBox (width: 10,),Icon(Icons.schedule),Text(' 8 hours',style:TextStyle(fontWeight: FontWeight.bold)),
+                 SizedBox (width: 20,),Icon(Icons.cloud),Text(' −8°C',style:TextStyle(fontWeight: FontWeight.bold)),
+                 SizedBox (width: 20,),Icon(Icons.star),Text(' 4.5',style:TextStyle(fontWeight: FontWeight.bold)),
+                 ],),
+                  SizedBox (height: 20,),
+                  Text("""
+The Himalayas,or Himalaya
+is a mountain range in Asia
+separating the plains of the
+Indian subcontinent from the
+Tibetan Plateau.The range 
+has some of the Earth's 
+highest peaks, including
+the highest, Mount Everest.
+More than 100 peaks exceeding 
+elevations of 7,200m above
+sea level lie in the Himalayas.
+""",style:TextStyle(fontWeight: FontWeight.bold,fontSize:15)),
+               ],),
+             )),
+             Positioned(
+              top: 700,left:50,
+              child: SizedBox(
+                width:200,
+              child:ElevatedButton(
+              onPressed:(){}, child:Text('Book Now',
+              style:TextStyle(fontWeight: FontWeight.bold,fontSize:15,color:Colors.black))),))
+                ],
+              ),
+            ),
+          )
+        ],
+      ),)
+    );
+   }
 }
