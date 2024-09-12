@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget
             //  '/bottomnavigatpages':(context) => RecomendedPage(),
             //   '/bottomnavigatpages':(context) => RecomendedPage(),
       },
-      initialRoute:'/morepages' ,
+      // initialRoute:'/morepages' ,
     );
   }
 }
@@ -497,6 +497,7 @@ Map places=
 
 final GlobalKey <FormState> _key=GlobalKey();
 List  foundedresult=[]; 
+List result=[];
 
   Color _iconColor=Colors.grey;
   Color _iconColor1=Colors.grey;
@@ -611,18 +612,27 @@ List  foundedresult=[];
               color: Colors.blue, width: 5.0,
             ), ),
                ), ),),
-
+            if(foundedresult.isNotEmpty)
+                 SizedBox(
+                  width: 100,height: 50,
+                   child: ElevatedButton(
+                    onPressed: ()
+                   {
+                    setState(() {
+                      foundedresult.clear();
+                    });
+                   }, child:Text('Hide Results',style:TextStyle(color:Colors.black),)),
+                 ),
        !foundedresult.isEmpty ? Container(
                   width: 300,height:500,
                   child:ListView.builder(
                   itemCount: foundedresult.length,
                  itemBuilder:(context, index)
                     {
-                        return Column(
-                          children: [
-                             GestureDetector(
+               return Column(
+                children: [
+                 GestureDetector(
             onDoubleTap: () {
-              print('fuji');
             },
              child: Card(
               clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -662,6 +672,9 @@ List  foundedresult=[];
                         );
                     }),
                 ): Text('Nothig Found!'),
+
+ 
+                
 
        Container(
         margin: EdgeInsets.all(20),
@@ -753,6 +766,7 @@ List  foundedresult=[];
           ],
         ),
       ),
+      
       Container(
         width: 300,height: 500,
         child: ListView(
@@ -960,6 +974,7 @@ List  foundedresult=[];
           ],
         ),
       ),
+
           ],
         )
       );
@@ -1075,3 +1090,5 @@ sea level lie in the Himalayas.
     );
    }
 }
+
+

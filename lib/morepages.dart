@@ -1,4 +1,5 @@
 import 'finalproject.dart';
+import 'informations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
@@ -346,7 +347,7 @@ class _NearbyPagestate extends State<NearbyPage>
                 children: [
                  GestureDetector(
                   onDoubleTap: () {
-                    print('fuji');
+                   Navigator.push(context,MaterialPageRoute(builder:(context)=>InformationPage2()));
                   },
                    child: Card(
                     clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -624,7 +625,7 @@ class _LatestaddPagestate extends State<LatestaddPage>
                 children: [
                  GestureDetector(
                   onDoubleTap: () {
-                    print('fuji');
+                   Navigator.push(context,MaterialPageRoute(builder:(context)=>InformationPage3()));
                   },
                    child: Card(
                     clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -902,7 +903,7 @@ class _RecomendedPagestate extends State<RecomendedPage>
                 children: [
                  GestureDetector(
                   onDoubleTap: () {
-                    print('fuji');
+                    Navigator.push(context,MaterialPageRoute(builder:(context)=>InformationPage4()));
                   },
                    child: Card(
                     clipBehavior: Clip.antiAliasWithSaveLayer,
