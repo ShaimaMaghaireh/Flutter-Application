@@ -113,8 +113,7 @@ class _ScedulesPagestate extends State<ScedulesPage>
                       borderRadius: BorderRadius.circular(30.0),
                     ),
                     elevation: 5,margin: EdgeInsets.all(10),shadowColor: Color.fromARGB(255, 37, 0, 158),
-                   ),) : Text('No items in your Schedule'),
-        ),
+                   ),) : Text('No items in your Schedule'), ),
     );
    }
 }
