@@ -528,6 +528,8 @@ List result=[];
     });
   }
   bool isFavorite = false;
+  bool isBooked=false;
+  int selectedIndex = 0;
      @override
     
     Widget build(BuildContext context)
@@ -541,7 +543,14 @@ List result=[];
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.schedule),
+              icon: IconButton(onPressed:(){
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ScedulesPage(isBooked: isBooked,),
+                ),
+              );
+            },icon: Icon(Icons.schedule),),
             label: 'Schedule',
           ),
           BottomNavigationBarItem(
@@ -682,18 +691,7 @@ List result=[];
           children: [
           Text('Popular places',style:TextStyle(fontSize:15,color:Colors.black,fontWeight: FontWeight.bold),),
          
-          Container(
-            margin: EdgeInsets.only(left: 130),
-            child: GestureDetector(
-            child:Text('View all',style:TextStyle(color:Colors.grey,fontWeight: FontWeight.bold)),
-            onTap: () {
-              print('here is all places');
-            },),
-          ),
-         
-          ],
-         ),
-       ),
+          ], ),),
 
       Container(
         width: 300,height: 100,
@@ -702,65 +700,102 @@ List result=[];
           children: [
             Row(
               children: [
-                GestureDetector(
-                  onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => MostViewedPage()));
-               setState(() {
-              _iconColor= _iconColor==Colors.grey ?Colors.black:Colors.grey;
-                });
+                 SizedBox(width: 20,),
+               TextButton(
+                  onPressed: () {
+                     Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MostViewedPage(),
+                ),
+              );
+                    setState(() {
+                      selectedIndex = 0;
+                    });
                   },
-                  child:
-                Container(
-                  margin: EdgeInsets.only(left: 10),
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color: _iconColor,),
-                  width: 120,height:50,
-                  child: Text('Most Viewed',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold),),),),
-          
-           GestureDetector(
-                  onTap: () {
-                     Navigator.push(context, MaterialPageRoute(builder: (context) => NearbyPage()));
-               setState(() {
-              _iconColor1= _iconColor1==Colors.grey ?Colors.black:Colors.grey;
-                });
+                  style: TextButton.styleFrom(
+                    backgroundColor:
+                        selectedIndex == 0 ? Colors.black : Colors.grey[300],
+                  ),
+                  child: Text(
+                    'Most Viewed',
+                    style: TextStyle(
+                      color: selectedIndex == 0 ? Colors.white : Colors.black,
+                    ),
+                  ),
+                ),
+                SizedBox(width: 30,),
+                TextButton(
+                  onPressed: () {
+                     Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => NearbyPage(),
+                ),
+              );
+                    setState(() {
+                      selectedIndex = 1;
+                    });
                   },
-                  child:
-                Container(
-                  margin: EdgeInsets.only(left: 10),
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color: _iconColor1,),
-                  width: 100,height:50,
-                  child: Text('Nearby',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold),textAlign:TextAlign.center,),),),
-               GestureDetector(
-                  onTap: () {
-                   Navigator.push(context, MaterialPageRoute(builder: (context) => LatestaddPage()));
-               setState(() {
-              _iconColor2= _iconColor2==Colors.grey ?Colors.black:Colors.grey;
-                });
+                  style: TextButton.styleFrom(
+                    backgroundColor:
+                        selectedIndex == 1 ? Colors.black : Colors.grey[300],
+                  ),
+                  child: Text(
+                    'Nearby',
+                    style: TextStyle(
+                      color: selectedIndex == 1 ? Colors.white : Colors.black,
+                    ),
+                  ),
+                ),
+                 SizedBox(width: 30,),
+                TextButton(
+                  onPressed: () {
+                     Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => LatestaddPage(),
+                ),
+              );
+                    setState(() {
+                      selectedIndex = 2;
+                    });
                   },
-                  child:
-                Container(
-                  margin: EdgeInsets.only(left: 10),
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color: _iconColor2,),
-                  width: 100,height:50,
-                  child: Text('Latest',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold),textAlign:TextAlign.center,),),),
-               
-               GestureDetector(
-                  onTap: () {
-                 Navigator.push(context, MaterialPageRoute(builder: (context) => RecomendedPage()));
-                     setState(() {
-              _iconColor3= _iconColor3==Colors.grey ?Colors.black:Colors.grey;
-                });
-                 },
-                  child:
-                Container(
-                  margin: EdgeInsets.only(left: 10),
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color: _iconColor3,),
-                  width: 120,height:50,
-                  child: Text('Recomended',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold),),),),
-
+                  style: TextButton.styleFrom(
+                    backgroundColor:
+                        selectedIndex == 2 ? Colors.black : Colors.grey[300],
+                  ),
+                  child: Text(
+                    'Latest',
+                    style: TextStyle(
+                      color: selectedIndex == 2 ? Colors.white : Colors.black,
+                    ),
+                  ),
+                ),
+                 SizedBox(width: 30,),
+                TextButton(
+                  onPressed: () {
+                 Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MostViewedPage(),
+                ),
+              );
+                    setState(() {
+                      selectedIndex = 3;
+                    });
+                  },
+                  style: TextButton.styleFrom(
+                    backgroundColor:
+                        selectedIndex == 3 ? Colors.black : Colors.grey[300],
+                  ),
+                  child: Text(
+                    'Recomended',
+                    style: TextStyle(
+                      color: selectedIndex == 3 ? Colors.white : Colors.black,
+                    ),
+                  ),
+                ),
               ],
             )
           ],

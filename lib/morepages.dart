@@ -26,29 +26,6 @@ class MostViewedPage extends StatefulWidget
 }
 class _MostViewedPagestate extends State<MostViewedPage>
 {
-   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 1: Business',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
    @override
    Widget build(BuildContext context)
    {
@@ -265,36 +242,6 @@ class _MostViewedPagestate extends State<MostViewedPage>
            ),
          ),
        
-
-      bottomNavigationBar: BottomNavigationBar(
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon:IconButton(onPressed: () {
-               Navigator.pop(context);
-            },icon: Icon(Icons.home),),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.schedule),
-            label: 'Schedule',
-          ),
-          BottomNavigationBarItem(
-            icon: IconButton(onPressed:(){
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) => FavoritesPage(isFavorite: isFavorite),
-              //   ),
-              // ); Icon(Icons.home),
-            }, icon:Icon(Icons.favorite)),
-            label: 'Favorite',
-           
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.black,
-        onTap: _onItemTapped,
-      ),
      );
    }
 }
@@ -307,29 +254,6 @@ class NearbyPage extends StatefulWidget
 }
 class _NearbyPagestate extends State<NearbyPage>
 {
-   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 1: Business',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
    @override
    Widget build(BuildContext context)
    {
@@ -544,37 +468,6 @@ class _NearbyPagestate extends State<NearbyPage>
             ],
            ),
          ),
-       
-
-      bottomNavigationBar: BottomNavigationBar(
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon:IconButton(onPressed: () {
-               Navigator.pop(context);
-            },icon: Icon(Icons.home),),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.schedule),
-            label: 'Schedule',
-          ),
-          BottomNavigationBarItem(
-            icon: IconButton(onPressed:(){
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) => FavoritesPage(isFavorite: isFavorite),
-              //   ),
-              // ); Icon(Icons.home),
-            }, icon:Icon(Icons.favorite)),
-            label: 'Favorite',
-           
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.black,
-        onTap: _onItemTapped,
-      ),
      );
    }
 }
@@ -586,29 +479,6 @@ class LatestaddPage extends StatefulWidget
 }
 class _LatestaddPagestate extends State<LatestaddPage>
 {
-   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 1: Business',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
    @override
    Widget build(BuildContext context)
    {
@@ -822,37 +692,6 @@ class _LatestaddPagestate extends State<LatestaddPage>
             ],
            ),
          ),
-       
-
-      bottomNavigationBar: BottomNavigationBar(
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon:IconButton(onPressed: () {
-               Navigator.pop(context);
-            },icon: Icon(Icons.home),),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.schedule),
-            label: 'Schedule',
-          ),
-          BottomNavigationBarItem(
-            icon: IconButton(onPressed:(){
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) => FavoritesPage(isFavorite: isFavorite),
-              //   ),
-              // ); Icon(Icons.home),
-            }, icon:Icon(Icons.favorite)),
-            label: 'Favorite',
-           
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.black,
-        onTap: _onItemTapped,
-      ),
      );
    }
 }
@@ -864,29 +703,6 @@ class RecomendedPage extends StatefulWidget
 }
 class _RecomendedPagestate extends State<RecomendedPage>
 {
-   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 1: Business',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
    @override
    Widget build(BuildContext context)
    {
@@ -1100,31 +916,6 @@ class _RecomendedPagestate extends State<RecomendedPage>
             ],
            ),
          ),
-       
-
-      bottomNavigationBar: BottomNavigationBar(
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon:IconButton(onPressed: () {
-               Navigator.pop(context);
-            },icon: Icon(Icons.home),),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.schedule),
-            label: 'Schedule',
-          ),
-          BottomNavigationBarItem(
-            icon: IconButton(onPressed:(){
-            }, icon:Icon(Icons.favorite)),
-            label: 'Favorite',
-           
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.black,
-        onTap: _onItemTapped,
-      ),
      );
    }
 }

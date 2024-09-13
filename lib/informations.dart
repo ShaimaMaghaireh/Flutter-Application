@@ -6,11 +6,13 @@ import 'package:flutter/widgets.dart';
 
 class InformationPage2 extends StatefulWidget
 {
+  
   @override
   State <InformationPage2> createState() => _InformationPage2state(); 
 }
 class _InformationPage2state extends State<InformationPage2>
 {
+
    @override
    Widget build(BuildContext context)
    {
@@ -102,7 +104,10 @@ of the World.
               child: SizedBox(
                 width:200,
               child:ElevatedButton(
-              onPressed:(){}, child:Text('Book Now',
+              onPressed:(){
+                 setState(() {
+                });
+              }, child:Text('Book Now',
               style:TextStyle(fontWeight: FontWeight.bold,fontSize:15,color:Colors.black))),))
                 ],
               ),
