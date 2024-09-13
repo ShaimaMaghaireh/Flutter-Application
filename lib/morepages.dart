@@ -872,7 +872,6 @@ class _RecomendedPagestate extends State<RecomendedPage>
                    ),),
                     GestureDetector(
                   onDoubleTap: () {
-                    print('fuji');
                   },
                    child: Card(
                     clipBehavior: Clip.antiAliasWithSaveLayer,
