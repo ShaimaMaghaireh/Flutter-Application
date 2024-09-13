@@ -24,9 +24,7 @@ class _FavoritesPagestate extends State<FavoritesPage>
         child:widget.isFavorite
             ?  GestureDetector(
             onDoubleTap: (
-            ) {
-              print('fuji');
-            },
+            ) {},
              child: Card(
               clipBehavior: Clip.antiAliasWithSaveLayer,
               child:Stack(
