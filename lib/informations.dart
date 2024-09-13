@@ -105,8 +105,6 @@ of the World.
                 width:200,
               child:ElevatedButton(
               onPressed:(){
-                 setState(() {
-                });
               }, child:Text('Book Now',
               style:TextStyle(fontWeight: FontWeight.bold,fontSize:15,color:Colors.black))),))
                 ],
