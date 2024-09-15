@@ -871,8 +871,7 @@ class _RecomendedPagestate extends State<RecomendedPage>
                     elevation: 5,margin: EdgeInsets.all(10),shadowColor: Color.fromARGB(255, 37, 0, 158),
                    ),),
                     GestureDetector(
-                  onDoubleTap: () {
-                  },
+                  onDoubleTap: () {},
                    child: Card(
                     clipBehavior: Clip.antiAliasWithSaveLayer,
                     child:Stack(
