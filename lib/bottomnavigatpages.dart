@@ -18,8 +18,7 @@ class _FavoritesPagestate extends State<FavoritesPage>
    {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Favorite Page'),
-      ),
+        title: Text('Favorite Page'),),
       body: Center(
         child:widget.isFavorite
             ?  GestureDetector(
