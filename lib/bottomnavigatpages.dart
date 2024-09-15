@@ -75,7 +75,7 @@ class _ScedulesPagestate extends State<ScedulesPage>
     return Scaffold( appBar: AppBar(
         title: Text('Schedule Page'),),
         body: Center(
-        child:widget.isBooked ?
+        child: widget.isBooked ?
          GestureDetector(
                   onDoubleTap: () {
                    Navigator.push(context,MaterialPageRoute(builder:(context)=>InformationPage2()));

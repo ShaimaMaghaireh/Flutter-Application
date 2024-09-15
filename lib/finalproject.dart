@@ -20,12 +20,7 @@ class MyApp extends StatelessWidget
          '/morepages':(context) => LatestaddPage(),
           '/morepages':(context) => NearbyPage(),
            '/morepages':(context) => RecomendedPage(),
-          //  '/bottomnavigatpages':(context) => FavoritesPage(),
-            // '/bottomnavigatpages':(context) => RecomendedPage(),
-            //  '/bottomnavigatpages':(context) => RecomendedPage(),
-            //   '/bottomnavigatpages':(context) => RecomendedPage(),
       },
-      // initialRoute:'/morepages' ,
     );
   }
 }
@@ -461,7 +456,6 @@ class signUPpage extends StatefulWidget
  }
  class HomePage extends StatefulWidget
 {
-  // final bool isFavorite;
   final String userN;
   HomePage({required this.userN});
   @override

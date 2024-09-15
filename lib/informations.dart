@@ -1,3 +1,5 @@
+import 'package:flutter_application_2/bottomnavigatpages.dart';
+
 import 'finalproject.dart';
 import 'morepages.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +14,7 @@ class InformationPage2 extends StatefulWidget
 }
 class _InformationPage2state extends State<InformationPage2>
 {
-
+   bool isBooked=false;
    @override
    Widget build(BuildContext context)
    {
@@ -105,6 +107,10 @@ of the World.
                 width:200,
               child:ElevatedButton(
               onPressed:(){
+                Navigator.push(context,MaterialPageRoute(builder:(context)=> ScedulesPage(isBooked: isBooked)));
+                setState(() {
+                  isBooked=!isBooked;
+                });
               }, child:Text('Book Now',
               style:TextStyle(fontWeight: FontWeight.bold,fontSize:15,color:Colors.black))),))
                 ],
