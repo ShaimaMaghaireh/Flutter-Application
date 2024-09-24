@@ -117,3 +117,121 @@ class _ScedulesPagestate extends State<ScedulesPage>
    }
 }
 
+class ProfilePage extends StatefulWidget
+{
+  @override
+  State <ProfilePage> createState() => _ProfilePagestate(); 
+}
+class _ProfilePagestate extends State<ProfilePage>
+{
+   @override
+   Widget build(BuildContext context)
+   {
+    return Scaffold(
+         appBar: AppBar(
+        title: Text(' Profile'),
+        centerTitle: true,
+        backgroundColor: Colors.teal,
+      ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SizedBox(height: 40),
+          CircleAvatar(
+            radius: 60,
+            backgroundImage: NetworkImage
+            ('https://wallpapers.com/images/featured/airplane-k2bvoms91kvb0tfp.jpg'),
+          ),
+          SizedBox(height: 20),
+          Text(
+            'Jane Traveler',
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(height: 5),
+          Text(
+            ' Travel Blogger',
+            style: TextStyle(
+              fontSize: 16,
+              color: Colors.grey[600],
+            ),
+          ),
+          SizedBox(height: 40),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Column(
+                children: [
+                  Text(
+                    'Trips',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.grey[600],
+                    ),
+                  ),
+                  SizedBox(height: 5),
+                  Text(
+                    '48',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+              Column(
+                children: [
+                  Text(
+                    'Countries Visited',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.grey[600],
+                    ),
+                  ),
+                  SizedBox(height: 5),
+                  Text(
+                    '20',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          SizedBox(height: 40),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30),
+            child: ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+               backgroundColor: Colors.teal,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                padding: EdgeInsets.symmetric(vertical: 15),
+              ),
+              child: Center(
+                child: Text(
+                  'Edit Profile',
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          SizedBox(height: 30),
+        
+        ],
+      ),
+    );
+   }
+}
+
+
+

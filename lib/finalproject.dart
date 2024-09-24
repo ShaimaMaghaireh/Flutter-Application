@@ -3,6 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
 import 'morepages.dart';
 import 'bottomnavigatpages.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:animate_do/animate_do.dart';
 void main()
 {
   runApp(MyApp());
@@ -24,6 +27,44 @@ class MyApp extends StatelessWidget
     );
   }
 }
+
+// class newpage extends StatefulWidget
+// {
+
+//  @override
+//  State <newpage> createState() => _newpagestate();
+// }
+
+// class  _newpagestate extends State <newpage>
+// {
+//   @override
+//   Widget build(BuildContext context)
+//   {
+//     return Scaffold(
+//       appBar: AppBar(title: Text('Responsive'),),
+//       body: LayoutBuilder(
+//         builder:(context,Constraints)
+//         {
+//           if(Constraints.maxWidth>1200)
+//           {
+//             // return DesktopLayout();
+//           }
+
+//           else if(Constraints.maxWidth<=1200 && Constraints.maxWidth>=800)
+//            {
+//           //   return TabletLayout();
+//           }
+//           else
+//           {
+//             return firstpage();
+//           }
+
+        
+//         },
+//     ),
+//     );
+//   }
+// }
 
 class firstpage extends StatefulWidget
 {
@@ -56,8 +97,20 @@ class firstpage extends StatefulWidget
               child: Row(
                children: [
               Container(
-              child: Text('Road Compass',style: TextStyle(color:Colors.white,fontSize:30,
-              fontWeight: FontWeight.bold),)),
+              child:
+               AnimatedTextKit(
+                totalRepeatCount: 1,
+      animatedTexts: [
+         TyperAnimatedText('Road Compass',textStyle: TextStyle(color:Colors.white,fontSize:30,
+              fontWeight: FontWeight.bold),speed: Duration(milliseconds: 400)),
+      ],
+      onTap: () {
+        print("Tap Event");
+      },
+    ),
+              //  Text('Road Compass',style: TextStyle(color:Colors.white,fontSize:30,
+              // fontWeight: FontWeight.bold),)
+              ),
               Container(
                 margin: EdgeInsets.only(left:10),
                 child: Image.network('https://cdn-icons-png.flaticon.com/512/340/340779.png',
@@ -69,10 +122,10 @@ class firstpage extends StatefulWidget
               margin: EdgeInsets.only(top: 50),
               child: Column(
                 children: [
-                  Text('Find Your Dream',style: TextStyle(color:Colors.white,fontSize:20,
-              fontWeight: FontWeight.bold)),
-                  Text('Destination With Us',style: TextStyle(color:Colors.white,fontSize:20,
-              fontWeight: FontWeight.bold))
+                  Text('Find Your Dream',style:GoogleFonts.alegreya( textStyle:  TextStyle(color:Colors.white,fontSize:25,
+              fontWeight: FontWeight.bold)),),
+                  Text('Destination With Us',style: GoogleFonts.alegreya(textStyle:TextStyle(color:Colors.white,fontSize:25,
+              fontWeight: FontWeight.bold)), )
                 ],
               ),
             ),
@@ -127,8 +180,8 @@ class   _LogChoicepagestate extends State <LogChoicepage>
             child: Column(
               children: [
                  SizedBox(height: 50,),
-                Text('Go ahead.',style:TextStyle(fontSize:15,fontWeight: FontWeight.bold),),
-                Text('You deserve it!',style:TextStyle(fontSize:15,fontWeight: FontWeight.bold)),
+                Text('Go ahead.',style:GoogleFonts.alegreya(textStyle:TextStyle(fontSize:25,fontWeight: FontWeight.bold)),),
+                Text('You deserve it!',style:GoogleFonts.alegreya(textStyle:TextStyle(fontSize:25,fontWeight: FontWeight.bold))),
                  
                   SizedBox(height: 50,),
                 SizedBox(
@@ -137,7 +190,8 @@ class   _LogChoicepagestate extends State <LogChoicepage>
             child: ElevatedButton(onPressed:(){
               Navigator.push(context,MaterialPageRoute(builder: (context) => Loginpage()));
             },
-                 child: Text('Log in',style:TextStyle(fontSize:15,fontWeight: FontWeight.bold,color:Colors.black))),
+                 child: Text('Log in',style:GoogleFonts.alegreya
+                 (textStyle: TextStyle(fontSize:20,fontWeight: FontWeight.bold,color:Colors.black)))),
              ),
               
               SizedBox(height: 15,),
@@ -147,7 +201,8 @@ class   _LogChoicepagestate extends State <LogChoicepage>
          child: ElevatedButton(onPressed:(){
           Navigator.push(context,MaterialPageRoute(builder: (context) => signUPpage()));
          },
-                 child: Text('Sign up',style:TextStyle(fontSize:15,fontWeight: FontWeight.bold,color:Colors.black))),
+                 child: Text('Sign up',style:GoogleFonts.alegreya
+                 (textStyle: TextStyle(fontSize:20,fontWeight: FontWeight.bold,color:Colors.black)))),
 ),
               ],
             ),
@@ -201,7 +256,7 @@ class   _LogChoicepagestate extends State <LogChoicepage>
                     children: [
                        SizedBox(height: 50,),
                  Text('Welcome Back!',
-                 style: TextStyle(fontSize:30,fontWeight: FontWeight.bold,color: Colors.black),),
+                 style:GoogleFonts.alegreya(textStyle:TextStyle(fontSize:30,fontWeight: FontWeight.bold,color: Colors.black) )),
                  SizedBox(height: 20,),
                  Form(
             key: _key,
@@ -228,9 +283,8 @@ class   _LogChoicepagestate extends State <LogChoicepage>
               return "User name cannot be empty";
              }
            },
-           decoration:InputDecoration(label:Text('Username'),
-           labelStyle: TextStyle(color: Colors.white,
-           fontWeight: FontWeight.bold,fontSize:20),
+           decoration:InputDecoration(label:Text('Username',style:GoogleFonts.alegreya(textStyle:TextStyle(color: Colors.white,
+           fontWeight: FontWeight.bold,fontSize:20)),),
           contentPadding: EdgeInsets.all(15),
           border: UnderlineInputBorder(borderRadius: BorderRadius.circular(50)),
            ),
@@ -255,9 +309,8 @@ class   _LogChoicepagestate extends State <LogChoicepage>
               return "Passsword cannot be empty";
              }
            },
-           decoration:InputDecoration(label:Text('Password'),
-          labelStyle: TextStyle(color: Colors.white,
-           fontWeight: FontWeight.bold,fontSize:20),
+           decoration:InputDecoration(label:Text('Password',style:GoogleFonts.alegreya(textStyle:TextStyle(color: Colors.white,
+           fontWeight: FontWeight.bold,fontSize:20))),
           contentPadding: EdgeInsets.all(15),
           border: UnderlineInputBorder(borderRadius: BorderRadius.circular(50)),
            ),
@@ -301,7 +354,9 @@ class   _LogChoicepagestate extends State <LogChoicepage>
             }
           }
          },
-           child: Text('Log in',style:TextStyle(fontSize:15,fontWeight: FontWeight.bold,color:Colors.black)),
+           child: Text('Log in',style:GoogleFonts.alegreya
+           (textStyle:TextStyle(fontSize:18,fontWeight: FontWeight.bold,color:Colors.black) )
+           ),
           )
           ),
 
@@ -310,8 +365,8 @@ class   _LogChoicepagestate extends State <LogChoicepage>
                   margin: EdgeInsets.only(left: 40),
                   child: Row(
                     children: [
-                      Text(' Do not have an account?',style: TextStyle(fontWeight: FontWeight.bold),),
-                      GestureDetector(child: Text('Sign up',style: TextStyle(fontWeight: FontWeight.bold)),
+                      Text(' Do not have an account?',style:GoogleFonts.alegreya(textStyle:TextStyle(fontWeight: FontWeight.bold)) ,),
+                      GestureDetector(child: Text('Sign up',style: GoogleFonts.alegreya(textStyle:TextStyle(fontWeight: FontWeight.bold))),
                       onTap: () {
                          Navigator.push(context,MaterialPageRoute(builder: (context) => signUPpage()));
                       },)
@@ -329,7 +384,7 @@ class   _LogChoicepagestate extends State <LogChoicepage>
       ),  
       );
    }
- }
+ }   
 
 class signUPpage extends StatefulWidget
 {
@@ -367,7 +422,7 @@ class signUPpage extends StatefulWidget
                     children: [
                  SizedBox(height: 50,),
                  Text('Create Account',
-                 style: TextStyle(fontSize:30,fontWeight: FontWeight.bold,color: Colors.black),),
+                 style: GoogleFonts.alegreya(textStyle:TextStyle(fontSize:30,fontWeight: FontWeight.bold,color: Colors.black)),),
                  SizedBox(height: 20,),
                     Container(
                     width: 300,
@@ -376,9 +431,9 @@ class signUPpage extends StatefulWidget
                     color: Colors.green.withOpacity(0.4),),
                      child: TextFormField(
                      controller: _usernameController,
-                     decoration:InputDecoration(label:Text('Username'),
-                     labelStyle: TextStyle(color: Colors.white,
-                     fontWeight: FontWeight.bold,fontSize:20),
+                     decoration:InputDecoration(label:Text('Username',
+                     style:GoogleFonts.alegreya(textStyle:TextStyle(color: Colors.white,
+                     fontWeight: FontWeight.bold,fontSize:20) )),
                      contentPadding: EdgeInsets.all(15),
                      border: UnderlineInputBorder(borderRadius: BorderRadius.circular(50)),
                     
@@ -392,9 +447,8 @@ class signUPpage extends StatefulWidget
                     decoration: BoxDecoration(borderRadius: BorderRadius.circular(50),
                     color: Colors.green.withOpacity(0.4),),
                      child: TextFormField(
-                     decoration:InputDecoration(label:Text('Email'),
-                     labelStyle: TextStyle(color: Colors.white,
-                     fontWeight: FontWeight.bold,fontSize:20),
+                     decoration:InputDecoration(label:Text('Email',style:GoogleFonts.alegreya(textStyle:TextStyle(color: Colors.white,
+                     fontWeight: FontWeight.bold,fontSize:20) )),
                      contentPadding: EdgeInsets.all(15),
                      border: UnderlineInputBorder(borderRadius: BorderRadius.circular(50)),
                     
@@ -408,9 +462,8 @@ class signUPpage extends StatefulWidget
                     decoration: BoxDecoration(borderRadius: BorderRadius.circular(50),
                     color: Colors.green.withOpacity(0.4),),
                      child: TextFormField(
-                     decoration:InputDecoration(label:Text('Password'),
-                     labelStyle: TextStyle(color: Colors.white,
-                     fontWeight: FontWeight.bold,fontSize:20),
+                     decoration:InputDecoration(label:Text('Password',style:GoogleFonts.alegreya(textStyle:TextStyle(color: Colors.white,
+                     fontWeight: FontWeight.bold,fontSize:20) )),
                      contentPadding: EdgeInsets.all(15),
                      border: UnderlineInputBorder(borderRadius: BorderRadius.circular(50)),
                     
@@ -428,15 +481,15 @@ class signUPpage extends StatefulWidget
                        Navigator.push(context,MaterialPageRoute(builder: (context) => HomePage(userN:userN)));
                       }
                  },
-                  child: Text('Sign up',style:TextStyle(fontSize:15,fontWeight: FontWeight.bold,color:Colors.black))),
+                  child: Text('Sign up',style:GoogleFonts.alegreya(textStyle:TextStyle(fontSize:15,fontWeight: FontWeight.bold,color:Colors.black)))),
                     ),
                 SizedBox(height: 10,),
                 Container(
                   margin: EdgeInsets.only(left: 80),
                   child: Row(
                     children: [
-                      Text('Have an account?',style: TextStyle(fontWeight: FontWeight.bold),),
-                      GestureDetector(child: Text('Log in',style: TextStyle(fontWeight: FontWeight.bold)),
+                      Text('Have an account?',style:GoogleFonts.alegreya(textStyle: TextStyle(fontWeight: FontWeight.bold),)),
+                      GestureDetector(child: Text('Log in',style:GoogleFonts.alegreya(textStyle: TextStyle(fontWeight: FontWeight.bold))),
                       onTap: () {
                          Navigator.push(context,MaterialPageRoute(builder: (context) => Loginpage()));
                       },)
@@ -531,6 +584,7 @@ List result=[];
       return Scaffold
       (
         bottomNavigationBar: BottomNavigationBar(
+          unselectedItemColor: Colors.blue,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -556,8 +610,19 @@ List result=[];
                 ),
               );
             }, icon:Icon(Icons.favorite)),
-            label: 'Favorite',
-           
+            label: 'Favorite', 
+          ),
+
+           BottomNavigationBarItem(
+            icon: IconButton(onPressed:(){
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ProfilePage(),
+                ),
+              );
+            }, icon:Icon(Icons.person_4_rounded)),
+            label: 'Profile', 
           ),
         ],
         currentIndex: _selectedIndex,
@@ -569,13 +634,13 @@ List result=[];
         Container(
           margin: EdgeInsets.only(left: 20),
           child: Text('Hi, ${widget.userN}👋!',
-          style: TextStyle(fontSize:30,color:Colors.black,fontWeight: FontWeight.bold),
-          ),
+          style:GoogleFonts.alegreya(textStyle: TextStyle(fontSize:30,color:Colors.black,fontWeight: FontWeight.bold),
+          )),
         ),
         Container(
            margin: EdgeInsets.only(left: 20),
           child: Text('Explore the world',
-           style: TextStyle(fontSize:20,color:Colors.black,fontWeight: FontWeight.bold),),
+           style:GoogleFonts.alegreya(textStyle: TextStyle(fontSize:20,color:Colors.black,fontWeight: FontWeight.bold),)),
         ),
         SizedBox(height: 30,),
 
@@ -674,18 +739,8 @@ List result=[];
                           ],
                         );
                     }),
-                ): Text('Nothig Found!'),
-
- 
-                
-
-       Container(
-        margin: EdgeInsets.all(20),
-         child: Row(
-          children: [
-          Text('Popular places',style:TextStyle(fontSize:15,color:Colors.black,fontWeight: FontWeight.bold),),
-         
-          ], ),),
+                ): Text('Nothig Found!',style:GoogleFonts.alegreya
+                (textStyle:TextStyle(fontWeight: FontWeight.bold),)),
 
       Container(
         width: 300,height: 100,
@@ -713,9 +768,9 @@ List result=[];
                   ),
                   child: Text(
                     'Most Viewed',
-                    style: TextStyle(
-                      color: selectedIndex == 0 ? Colors.white : Colors.black,
-                    ),
+                    style: GoogleFonts.aladin(textStyle:TextStyle(
+                      color: selectedIndex == 0 ? Colors.white : Colors.black,fontSize:20
+                    ), )
                   ),
                 ),
                 SizedBox(width: 30,),
@@ -737,10 +792,11 @@ List result=[];
                   ),
                   child: Text(
                     'Nearby',
-                    style: TextStyle(
-                      color: selectedIndex == 1 ? Colors.white : Colors.black,
+                    style: GoogleFonts.aladin(textStyle: 
+                    TextStyle(
+                      color: selectedIndex == 1 ? Colors.white : Colors.black,fontSize:20
                     ),
-                  ),
+                  )),
                 ),
                  SizedBox(width: 30,),
                 TextButton(
@@ -761,10 +817,11 @@ List result=[];
                   ),
                   child: Text(
                     'Latest',
-                    style: TextStyle(
-                      color: selectedIndex == 2 ? Colors.white : Colors.black,
+                    style:
+                    GoogleFonts.aladin(textStyle: TextStyle(
+                      color: selectedIndex == 2 ? Colors.white : Colors.black,fontSize:20
                     ),
-                  ),
+                  )),
                 ),
                  SizedBox(width: 30,),
                 TextButton(
@@ -785,10 +842,10 @@ List result=[];
                   ),
                   child: Text(
                     'Recomended',
-                    style: TextStyle(
-                      color: selectedIndex == 3 ? Colors.white : Colors.black,
+                    style:GoogleFonts.aladin(textStyle: TextStyle(
+                      color: selectedIndex == 3 ? Colors.white : Colors.black,fontSize:20
                     ),
-                  ),
+                  )),
                 ),
               ],
             )
@@ -796,6 +853,11 @@ List result=[];
         ),
       ),
       
+        Container(
+          margin: EdgeInsets.only(left: 20),
+         child:
+          Text('Popular places',style:GoogleFonts.alegreya(textStyle: TextStyle(fontSize:25,color:Colors.black,fontWeight: FontWeight.bold)),),
+          ),
       Container(
         width: 300,height: 500,
         child: ListView(
@@ -1003,11 +1065,46 @@ List result=[];
           ],
         ),
       ),
-
+      
+       Container(
+          margin: EdgeInsets.only(left: 20),
+         child:
+          Text('Best Services',style:GoogleFonts.alegreya(textStyle: TextStyle(fontSize:25,color:Colors.black,fontWeight: FontWeight.bold)),),
+          ),
+      SizedBox(height: 20,),
+       Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              FadeInLeft(child: Container(width: 80,height: 80,
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color:const Color.fromARGB(255, 150, 183, 239)),
+              child:Image.network('https://cdn-icons-png.flaticon.com/512/2134/2134439.png',width:50,height: 50,),)),
+              FadeInUp(child: Container(width: 80,height: 80,
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color:const Color.fromARGB(255, 150, 183, 239)),
+              child:Image.network('https://cdn-icons-png.flaticon.com/512/2036/2036899.png',width:50,height: 50,),)),
+              FadeInDown(child: Container(width: 80,height: 80,
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color:const Color.fromARGB(255, 150, 183, 239)),
+              child:Image.network('https://cdn-icons-png.flaticon.com/512/620/620686.png',width:50,height: 50,),)),
+              FadeInRight(child: Container(width: 80,height: 80,
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color:const Color.fromARGB(255, 150, 183, 239)),
+              child:Image.network('https://cdn-icons-png.flaticon.com/512/6554/6554023.png',width:50,height: 50,),)),
+            ],
+          ),
           ],
         )
       );
     }
+}
+
+class Square extends StatelessWidget {
+  const Square({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 50,
+      height: 50,
+      color: Colors.blueAccent,
+    );
+  }
 }
 
 class InformationPage extends StatefulWidget
