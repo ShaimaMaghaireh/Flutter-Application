@@ -577,6 +577,7 @@ List result=[];
   bool isFavorite = false;
   bool isBooked=false;
   int selectedIndex = 0;
+  
      @override
     
     Widget build(BuildContext context)
